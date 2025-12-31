@@ -26,14 +26,16 @@ body {
 }
 
 .img-large {
-  height: 420px;
-  max-width: 100%;
+  width: 320px;
+  max-width: 80vw;
+  height: auto;
   object-fit: contain;
 }
 
 .img-small {
-  height: 260px;
-  max-width: 100%;
+    width: 200px;
+  height: auto;
+  max-width: 60vw;
   object-fit: contain;
   margin-top: 80px;
 }
