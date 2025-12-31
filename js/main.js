@@ -1,4 +1,3 @@
-
 let isKo = false;
 let currentSection = null;
 
@@ -11,7 +10,6 @@ const piBtn = document.getElementById("piBtn");
 const licenseBtn = document.getElementById("licenseBtn");
 const backBtn = document.getElementById("backBtn");
 
-// 섹션 텍스트
 const sectionText = {
   en: {
     work: `<h2>Work Experience</h2>`,
@@ -25,52 +23,55 @@ const sectionText = {
   },
 };
 
-function renderPanel() {
-  if (!currentSection) return;
-  infoPanel.innerHTML = (isKo ? sectionText.ko : sectionText.en)[currentSection];
-  infoPanel.classList.add("show");
-}
-
-function openSection(key) {
-  currentSection = key;
-  layout.classList.add("open");
-  backBtn.hidden = false;
-  renderPanel();
-}
-
-// 섹션 버튼
-workBtn.addEventListener("click", () => openSection("work"));
-piBtn.addEventListener("click", () => openSection("pi"));
-licenseBtn.addEventListener("click", () => openSection("license"));
-
-// 언어 토글
-langBtn.addEventListener("click", () => {
-  isKo = !isKo;
-
+function setLabels() {
   if (isKo) {
     langBtn.textContent = "English";
     workBtn.textContent = "경력";
     piBtn.textContent = "개인 정보";
     licenseBtn.textContent = "자격증 & 공부";
     backBtn.textContent = "뒤로가기";
+    document.documentElement.lang = "ko";
   } else {
     langBtn.textContent = "Korean";
     workBtn.textContent = "Work Experience";
     piBtn.textContent = "Personal Information";
     licenseBtn.textContent = "License & Study";
     backBtn.textContent = "Back";
+    document.documentElement.lang = "en";
   }
+}
 
+function renderPanel() {
+  if (!currentSection) return;
+  const dict = isKo ? sectionText.ko : sectionText.en;
+  infoPanel.innerHTML = dict[currentSection];
+  infoPanel.classList.add("show");
+}
+
+function openSection(key) {
+  currentSection = key;
+  layout.classList.add("open");
   renderPanel();
-});
+}
 
-// 뒤로가기
-backBtn.addEventListener("click", () => {
+function closeSection() {
   currentSection = null;
-
   layout.classList.remove("open");
   infoPanel.classList.remove("show");
   infoPanel.innerHTML = "";
+}
 
-  backBtn.hidden = true;
+workBtn.addEventListener("click", () => openSection("work"));
+piBtn.addEventListener("click", () => openSection("pi"));
+licenseBtn.addEventListener("click", () => openSection("license"));
+
+langBtn.addEventListener("click", () => {
+  isKo = !isKo;
+  setLabels();
+  renderPanel();
 });
+
+backBtn.addEventListener("click", closeSection);
+
+// 초기 라벨 세팅
+setLabels();
