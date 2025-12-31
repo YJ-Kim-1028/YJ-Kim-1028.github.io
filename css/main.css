@@ -128,14 +128,14 @@ body {
 }
 
 .img-large {
-  width: 180px;
+  width: clamp(200px, 22vw, 120px);
   height: auto;
 }
 
 .img-small {
-  width: 150px;
+  width: clamp(180px, 18vw, 150px);
   height: auto;
-  margin-top: 100px;
+  margin-top: clamp(40px, 6vw, 100px);
 }
 
 .info-panel {
