@@ -58,7 +58,6 @@ function closeSection() {
   currentSection = null;
   layout.classList.remove("open");
   infoPanel.classList.remove("show");
-  infoPanel.innerHTML = "";
 }
 
 workBtn.addEventListener("click", () => openSection("work"));
