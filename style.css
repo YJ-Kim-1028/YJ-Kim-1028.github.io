@@ -777,13 +777,23 @@ mark { color: inherit; background: linear-gradient(transparent 48%, #ffe36e 48%)
   #ai-workflow .split-view > .split-pane { position: static; overflow: visible; padding: 0; }
 }
 
-/* 웹 경력 사례 카드 */
+/* 웹 개발 경력 카드 */
 .case-title { margin: 28px 0 12px; font-size: 16px; color: var(--text); }
-.case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
-.case-card { background: var(--panel); border: 3px solid var(--line); box-shadow: 3px 3px 0 #000; padding: 14px 16px; min-width: 0; }
-.case-card h4 { margin: 0 0 10px; font-size: 15px; color: var(--text); }
-.case-card h4 span { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; color: var(--muted); }
-.case-card dl { margin: 0; display: grid; gap: 8px; }
-.case-card dl > div { display: grid; grid-template-columns: 3em 1fr; gap: 10px; font-size: 13.5px; line-height: 1.65; }
-.case-card dt { color: var(--accent); font-weight: 700; }
-.case-card dd { margin: 0; color: var(--text); }
+.career-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.career-card .project-card-body { gap: 8px; }
+.career-card .meta { margin: 0; }
+.career-details { margin-top: 20px; }
+.career-body { display: grid; gap: 6px; font-size: 14.5px; line-height: 1.8; }
+.career-body p { margin: 0; }
+.career-body .tl-h { margin-top: 8px; font-weight: 700; color: var(--accent); }
+.career-sub { margin: 10px 0 0; font-weight: 700; color: var(--accent); border-top: 3px solid var(--line); padding-top: 14px; }
+.career-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 14px; }
+.career-case { border: 3px solid var(--line); background: var(--bg); padding: 12px 14px; min-width: 0; }
+.career-case-t { margin: 0 0 8px; font-weight: 700; color: var(--text); }
+.career-case dl { margin: 0; display: grid; gap: 6px; font-size: 14px; line-height: 1.65; }
+.career-case dl > div { display: grid; grid-template-columns: 3em 1fr; gap: 10px; }
+.career-case dt { color: var(--accent); font-weight: 700; }
+.career-case dd { margin: 0; }
+.detail .career-case dl { grid-template-columns: 1fr; gap: 6px; }
+.detail .career-case dl > div { display: grid; grid-template-columns: 3.2em 1fr; gap: 10px; }
+.detail .career-case dt { color: var(--accent); }
