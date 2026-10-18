@@ -776,3 +776,14 @@ mark { color: inherit; background: linear-gradient(transparent 48%, #ffe36e 48%)
   #ai-workflow .split-view { padding: 16px 20px 20px; }
   #ai-workflow .split-view > .split-pane { position: static; overflow: visible; padding: 0; }
 }
+
+/* 웹 경력 사례 카드 */
+.case-title { margin: 28px 0 12px; font-size: 16px; color: var(--text); }
+.case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.case-card { background: var(--panel); border: 3px solid var(--line); box-shadow: 3px 3px 0 #000; padding: 14px 16px; min-width: 0; }
+.case-card h4 { margin: 0 0 10px; font-size: 15px; color: var(--text); }
+.case-card h4 span { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; color: var(--muted); }
+.case-card dl { margin: 0; display: grid; gap: 8px; }
+.case-card dl > div { display: grid; grid-template-columns: 3em 1fr; gap: 10px; font-size: 13.5px; line-height: 1.65; }
+.case-card dt { color: var(--accent); font-weight: 700; }
+.case-card dd { margin: 0; color: var(--text); }
