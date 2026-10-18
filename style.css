@@ -763,3 +763,16 @@ mark { color: inherit; background: linear-gradient(transparent 48%, #ffe36e 48%)
 }
 /* AI WORKFLOW 영역: 스킬 세 묶음과 구분되는 보라색 제목, 위쪽 여백 */
 #ai-workflow { --sk: #7b3fa0; --sk-d: #542a70; margin-top: 8px; }
+
+/* AI WORKFLOW: 오른쪽 본문 상자 높이를 왼쪽 목록 높이에 맞춥니다. 내용이 길면 상자 안에서 스크롤됩니다. */
+#ai-workflow .split { align-items: stretch; min-height: 400px; }
+#ai-workflow .split-list { justify-content: stretch; }
+#ai-workflow .split-item { flex: 1 1 0; display: flex; align-items: center; }
+#ai-workflow .split-view { position: relative; padding: 0; }
+#ai-workflow .split-view > .split-pane { position: absolute; inset: 0; overflow-y: auto; padding: 16px 20px 20px; }
+@media (max-width: 760px) {
+  #ai-workflow .split { min-height: 0; }
+  #ai-workflow .split-item { flex: none; }
+  #ai-workflow .split-view { padding: 16px 20px 20px; }
+  #ai-workflow .split-view > .split-pane { position: static; overflow: visible; padding: 0; }
+}
