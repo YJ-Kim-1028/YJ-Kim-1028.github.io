@@ -797,3 +797,6 @@ mark { color: inherit; background: linear-gradient(transparent 48%, #ffe36e 48%)
 .detail .career-case dl { grid-template-columns: 1fr; gap: 6px; }
 .detail .career-case dl > div { display: grid; grid-template-columns: 3.2em 1fr; gap: 10px; }
 .detail .career-case dt { color: var(--accent); }
+/* 웹 경력 상세: 나열 항목 앞에 점을 붙여 목록으로 보이게 합니다 */
+.career-body p:not(.tl-h) { position: relative; padding-left: 1.1em; }
+.career-body p:not(.tl-h)::before { content: "•"; position: absolute; left: 0.1em; color: var(--accent); font-weight: 700; }
