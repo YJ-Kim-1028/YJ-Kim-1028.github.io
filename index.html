@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>게임 기획·개발 포트폴리오</title>
+  <meta name="description" content="게임 개발자 포트폴리오 - 픽셀 게임 스타일">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.0/dist/galmuri.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-mode="dev">
+
+  <!-- HUD: 상단 고정 메뉴 -->
+  <header class="hud">
+    <a class="hud-logo" href="#title">PLAYER<span class="blink">_</span>1</a>
+    <nav>
+      <a href="#about">STAGE 1<small>소개</small></a>
+      <a href="#skills">STAGE 2<small>스킬</small></a>
+      <a href="#career">STAGE 3<small>이력</small></a>
+      <a href="#projects">STAGE 4<small>프로젝트</small></a>
+      <a href="#contact">CONTINUE?<small>연락</small></a>
+    </nav>
+  </header>
+
+  <!-- TITLE -->
+  <section id="title" class="title-screen">
+    <canvas id="hero-sprite" width="32" height="32" aria-hidden="true"></canvas>
+    <p class="eyebrow">GAME DEVELOPER PORTFOLIO</p>
+    <h1>김유진<span class="sub">KIM YUJIN</span></h1>
+    <p class="tagline only-dev">새싹을 틔울 때부터 열매를 맺을 때까지<br>기획하고, 구현하고, 직접 플레이하며 검증하는 1인 개발자</p>
+    <p class="tagline only-design">새싹을 틔울 때부터 열매를 맺을 때까지<br>규칙을 문서로 쓰고, 직접 구현해 플레이하며 검증하는 기획자</p>
+
+    <a class="btn" href="#about">▶ PRESS START</a>
+    <p class="hint">↓ 스크롤하거나 위 메뉴로 스테이지를 이동하세요</p>
+  </section>
+
+  <main>
+    <!-- STAGE 1 -->
+    <section id="about" class="stage">
+      <h2><span class="stage-no">STAGE 1</span> ABOUT ME</h2>
+
+      <blockquote class="motto">
+        <p class="motto-hanja">知彼知己 百戰不殆</p>
+        <p class="motto-main">지피지기 백전불태</p>
+        <p class="motto-sub">적을 알고 나를 알면, 백 번 싸워도 위태롭지 않다.</p>
+      </blockquote>
+
+      <!-- 캐릭터 장면 카드: 슬라이드마다 배경과 말풍선이 바뀝니다 -->
+      <div class="scene" id="talk" data-scene="hello">
+        <div class="scene-bg" id="scene-bg"></div>
+        <div class="scene-shade"></div>
+        <p class="scene-label" id="scene-label"></p>
+        <p class="scene-sub" id="scene-sub"></p>
+        <p class="scene-board" id="scene-board"></p>
+        <svg class="scene-cursor" viewBox="0 0 12 19" aria-hidden="true">
+          <path d="M0 0h2v2h1v2h1v2h1v2h1v2h1v2h2v1H8v1h1v3H8v-1H7v-2H6v-2H5v-1H4v1H3v1H2v1H1v1H0z" fill="#fff" stroke="#1a1c2c" stroke-width="1"/>
+        </svg>
+        <canvas class="sprite scene-sprite" width="32" height="32" aria-hidden="true"></canvas>
+        <div class="bubble" aria-live="polite">
+          <p class="bubble-name">김유진</p>
+          <p class="bubble-text" id="talk-text"></p>
+        </div>
+      </div>
+      <div class="talk-controls">
+        <button type="button" id="talk-prev" aria-label="이전 대사">◀</button>
+        <span class="talk-dots" id="talk-dots" aria-hidden="true"></span>
+        <button type="button" id="talk-next" aria-label="다음 대사">▶</button>
+      </div>
+
+      <!--
+        대사 목록: <li>의 글을 고치면 말풍선이 바뀝니다.
+        data-scene : 배경 종류 (hello / click / online / analyze / make / finale)
+        data-label : 장면 위에 크게 뜨는 글자,  data-sub : 작은 글자
+        data-bg    : 배경으로 쓸 사진 경로 (예: img/my-photo.png). 없으면 색 배경이 나옵니다.
+      -->
+      <ol class="talk-script" hidden>
+        <li data-scene="hello" data-bg="img/scene_1.svg" data-label="WHO" data-sub="">안녕하세요, 저는 FPS, MOBA, MMORPG, 스팀까지 장르를 가리지 않고 즐겨 온 <b>플레이어</b>입니다. 누구보다 게임을 좋아하는 만큼 유저의 마음도 잘 압니다. 그렇기에 <b>고객의 자리에서</b> 개발합니다.</li>
+        <li data-scene="click" data-bg="img/scene_2.png" data-smooth="1" data-label="WHEN" data-sub="">대학교 졸업 과제로 치매 노인을 위한 VR 리듬 게임을 개발하여 공모전에서 은상을 받았습니다. 게임이 단순한 놀잇감이 아니라 사람의 삶에 밀접해 있고, 긍정적인 영향을 줄 수 있다고 믿었기 때문입니다.</li>
+        <li data-scene="online" data-bg="img/scene_3.svg" data-board="클로드로 게임 개발" data-label="WHERE" data-sub="">졸업 후 웹 개발자로 일하는 동안에도 게임을 만들고 싶은 마음은 늘 있었습니다. 그러다 클로드로 게임을 개발할 수 있다는 강의를 듣고 바로 제작을 시작했습니다.</li>
+        <li data-scene="make" data-bg="img/scene_4.png" data-label="WHAT" data-sub="">그렇게 만든 게 Nightshade Meadow입니다. 기획안을 쓰고, 3만 줄짜리 게임으로 직접 구현해 플레이하며 완성한 뒤 itch.io에 업로드했습니다.</li>
+        <li data-scene="analyze" data-bg="img/scene_5_dev.svg" data-smooth="1" data-label="HOW" data-sub="">NPC별 성격과 대사를 직접 쓰고, 기획부터 구현, 테스트, 디버깅, 성능 점검까지 혼자 책임졌습니다. 직접 플레이하고 친구들의 테스트를 거치며 계속 다듬었습니다. 웹 개발보다 훨씬 재밌었고, 제 자아가 실현되는 뿌듯함을 느꼈습니다.</li>
+        <li data-scene="finale" data-bg="img/scene_6.png" data-sprite="right" data-label="WHY" data-sub="">게임 속에서 사람들이 관계와 인간성을 느끼며, 조금이라도 즐거운 삶을 살았으면 좋겠습니다. 그래서 저는 게임 개발자가 되려고 합니다.</li>
+      </ol>
+
+      <!-- 인적사항: [ ] 안의 내용을 직접 수정하세요. 공개하기 싫은 줄은 <div class="profile-row"> 한 줄을 통째로 지우면 됩니다. -->
+      <div class="panel profile">
+        <h3 class="profile-title">PLAYER PROFILE</h3>
+        <dl class="profile-grid">
+          <div class="profile-row"><dt>NAME</dt><dd>김유진 <small>(KIM YUJIN)</small></dd></div>
+          <div class="profile-row"><dt>BIRTH</dt><dd>1998.10.28</dd></div>
+          <div class="profile-row"><dt>PHONE</dt><dd>010-5529-3093</dd></div>
+          <div class="profile-row"><dt>EMAIL</dt><dd>code11298@naver.com</dd></div>
+          <div class="profile-row"><dt>LOCATION</dt><dd>경기도 수원시</dd></div>
+          <div class="profile-row"><dt>EDUCATION</dt><dd>한양여자대학교 컴퓨터정보과 졸업</dd></div>
+          <div class="profile-row"><dt>POSITION</dt><dd>게임 개발 / 기획 <small>(웹 개발 4년 3개월 · 게임 개발 전환)</small></dd></div>        </dl>
+      </div>
+    </section>
+
+    <!-- STAGE 2 -->
+    <section id="skills" class="stage">
+      <h2><span class="stage-no">STAGE 2</span> SKILLS</h2>
+      <div id="skills-plan">
+        <h3 class="skill-group">PLANNING</h3>
+      <div class="skill-grid">
+        <div class="skill" data-level="80"><span>시스템 기획</span><div class="bar"><i></i></div><em>80</em></div>
+        <div class="skill" data-level="80"><span>캐릭터·NPC 설계</span><div class="bar"><i></i></div><em>80</em></div>
+        <div class="skill" data-level="75"><span>내러티브 설계</span><div class="bar"><i></i></div><em>75</em></div>
+        <div class="skill" data-level="75"><span>기획서 작성</span><div class="bar"><i></i></div><em>75</em></div>
+        <!-- 숨김: <div class="skill" data-level="70"><span>데이터 테이블</span><div class="bar"><i></i></div><em>70</em></div> -->
+        <!-- 숨김: <div class="skill" data-level="70"><span>레벨/맵 설계</span><div class="bar"><i></i></div><em>70</em></div> -->
+        <div class="skill" data-level="65"><span>수치/밸런스</span><div class="bar"><i></i></div><em>65</em></div>
+        <div class="skill" data-level="60"><span>플레이테스트</span><div class="bar"><i></i></div><em>60</em></div>
+        <!-- 숨김: <div class="skill" data-level="60"><span>UX/UI 기획</span><div class="bar"><i></i></div><em>60</em></div> -->
+      </div>
+      </div>
+      <div id="skills-game">
+        <h3 class="skill-group">GAME</h3>
+        <div class="skill-grid">
+          <div class="skill" data-level="80"><span>시스템 · 데이터 설계</span><div class="bar"><i></i></div><em>80</em></div>          <div class="skill" data-level="45"><span>성능 분석·최적화</span><div class="bar"><i></i></div><em>45</em></div>
+          <div class="skill" data-level="70"><span>픽셀아트 · 맵 제작</span><div class="bar"><i></i></div><em>70</em></div>
+          <div class="skill" data-level="60"><span>UI/UX 구현</span><div class="bar"><i></i></div><em>60</em></div>
+          <div class="skill" data-level="50"><span>Godot 4 / GDScript</span><div class="bar"><i></i></div><em>50</em></div>
+          <div class="skill" data-level="30"><span>Unity / C#</span><div class="bar"><i></i></div><em>30</em></div>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h3 class="skill-group">WEB · 실무 4년 3개월</h3>
+        <div class="skill-grid">
+          <div class="skill" data-level="80"><span>Java / Spring Boot</span><div class="bar"><i></i></div><em>80</em></div>
+          <div class="skill" data-level="75"><span>JavaScript / JSP</span><div class="bar"><i></i></div><em>75</em></div>
+          <div class="skill" data-level="75"><span>SQL / Oracle / MySQL</span><div class="bar"><i></i></div><em>75</em></div>
+          <div class="skill" data-level="70"><span>REST API / MSA</span><div class="bar"><i></i></div><em>70</em></div>
+          <div class="skill" data-level="65"><span>Git / Jenkins (CI/CD)</span><div class="bar"><i></i></div><em>65</em></div>
+          <div class="skill" data-level="60"><span>ServiceNow</span><div class="bar"><i></i></div><em>60</em></div>
+        </div>
+      </div>
+      <div id="ai-workflow">
+        <h3 class="skill-group">AI WORKFLOW · Claude Code</h3>
+              <div class="split" data-split>
+              <div class="split-list">
+                <button type="button" class="split-item" data-pane="sp-ai-1" aria-pressed="false">프로젝트 규칙 문서로 AI 제어 (CLAUDE.md)</button>
+                <button type="button" class="split-item" data-pane="sp-ai-2" aria-pressed="false">세션 핸드오프 기록으로 컨텍스트 이어받기</button>
+                <button type="button" class="split-item" data-pane="sp-ai-3" aria-pressed="false">기획서 기반 개발 (Spec-driven)</button>
+                <button type="button" class="split-item" data-pane="sp-ai-4" aria-pressed="false">반복 실수를 규칙으로 환류</button>
+                <button type="button" class="split-item" data-pane="sp-ai-5" aria-pressed="false">검증 자동화와 롤백 지점</button>
+              </div>
+              <div class="split-view">
+                <article class="split-pane" id="sp-ai-1" hidden>
+                  <h5 class="sp-title">프로젝트 규칙 문서로 AI 제어 (CLAUDE.md)</h5>
+                  <p class="sp-line">AI가 세션마다 읽는 한 파일에 프로젝트의 규칙과 금지 사항을 모았습니다</p>
+                  <div class="step"><em>규칙</em><span>프로젝트 개요, 기획 문서 위치, 코드 규칙(스크립트 300줄 이하, 리소스 경로는 상수), 사용할 오토로드, UI 규칙을 303줄로 정리했습니다.</span></div>
+                  <div class="step"><em>가드레일</em><span>"절대 하지 말 것"에 JSON 구조 임의 변경, 세이브 구조 변경, 사용자 승인 없는 리팩토링 등을 적어, AI가 마음대로 큰 변경을 하지 못하게 했습니다.</span></div>
+                  <div class="step"><em>작업 규칙</em><span>작업 전 기존 파일 확인, 새 파일은 만든 이유 설명, 폴더 구조 변경은 승인, 작업 후 변경 사항 요약을 규칙으로 두었습니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-ai-2" hidden>
+                  <h5 class="sp-title">세션 핸드오프 기록으로 컨텍스트 이어받기</h5>
+                  <p class="sp-line">새 세션이 어디까지 했는지 바로 알 수 있게 했습니다</p>
+                  <div class="step"><em>기록</em><span>세션마다 한 일과 남은 일을 <code>plan/dayN.md</code>로 남겼습니다. 29일치입니다.</span></div>
+                  <div class="step"><em>컨텍스트</em><span>CLAUDE.md에 "작업 시작 전에 이전 세션 기록부터 읽는다"고 적어, 새 세션이 앞선 맥락을 빠르게 이어받게 했습니다.</span></div>
+                  <div class="step"><em>토큰 절감</em><span>대화 원문을 모은 로그는 사람이 나중에 볼 용도로 따로 두고 AI는 매번 읽지 않아도 되게 했습니다. 참고 자료 폴더는 무시하도록 지정했습니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-ai-3" hidden>
+                  <h5 class="sp-title">기획서 기반 개발 (Spec-driven)</h5>
+                  <p class="sp-line">기획서를 읽기 전용 기준으로 두고 코드가 따르게 했습니다</p>
+                  <div class="step"><em>기준 문서</em><span>기획 문서 56개를 시스템, 공포, NPC, 장소 폴더로 나눠 두고 읽기 전용 기준으로 삼았습니다. 시스템별로 필요한 문서만 읽게 했습니다.</span></div>
+                  <div class="step"><em>추적성</em><span>코드 주석에 근거가 된 기획 문서와 사용자 지시 날짜를 남겨, 왜 그렇게 만들었는지 나중에 추적할 수 있게 했습니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-ai-4" hidden>
+                  <h5 class="sp-title">반복 실수를 규칙으로 환류</h5>
+                  <p class="sp-line">같은 실수를 AI가 다시 하지 않게 했습니다</p>
+                  <div class="step"><em>체크리스트</em><span>UI 창을 닫아도 클릭을 가로채던 버그가 반복되자, 원인과 예방법 7가지를 CLAUDE.md에 적었습니다. 새 화면을 만들 때 AI가 이 규칙을 먼저 보고 같은 실수를 피합니다.</span></div>
+                  <div class="step"><em>규칙 갱신</em><span>28개 화면의 중복 함수를 공통 함수로 통합한 뒤에는 이 규칙도 "복사하지 말고 공통 함수를 쓴다"로 고쳤습니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-ai-5" hidden>
+                  <h5 class="sp-title">검증 자동화와 롤백 지점</h5>
+                  <p class="sp-line">AI가 한 작업을 믿기 전에 확인했습니다</p>
+                  <div class="step"><em>헤드리스 검증</em><span>게임을 눈에 보이는 창 없이 실행해, 화면을 열고 닫은 뒤 모든 UI의 클릭 설정을 기록하고 정리 전후를 비교했습니다(회귀 테스트).</span></div>
+                  <div class="step"><em>변경 이력</em><span>AI가 해결한 기술 작업(렌더링 구조, 성능 등)은 원인과 해결 방법, 누가 무엇을 했는지를 기술 노트에 따로 적었습니다.</span></div>
+                  <div class="step"><em>롤백</em><span>기능 단위로 커밋해 120개가 넘는 되돌릴 지점을 남겼고, 렌더링 구조 전환 같은 큰 변경 전에는 커밋으로 되돌릴 지점을 먼저 만들었습니다.</span></div>
+                </article>
+              </div>
+            </div>
+      </div>
+
+    </section>
+
+    <!-- STAGE 3 -->
+    <section id="career" class="stage">
+      <h2><span class="stage-no">STAGE 3</span> CAREER LOG</h2>
+      <!--
+        이력 타임라인: <li> 하나가 한 줄입니다. 최신순으로 쓰세요.
+        data-type : work(경력) / edu(학력·교육) / award(수상) / cert(자격증) / etc(활동)
+        경력이 없으면 work 줄은 지우고 나머지를 채우세요.
+      -->
+      <ol class="timeline">
+        <li data-type="etc">
+          <time>2026.08 ~ 진행 중</time>
+          <div><strong>Nightshade Meadow</strong><span>1인 개발 · Godot 4 · 기획부터 빌드, itch.io 업로드까지</span></div>
+          <em>프로젝트</em>
+        </li>
+        <li data-type="work">
+          <time>2024.09 ~ 2026.04</time>
+          <div><strong>코니퍼</strong><span>웹 개발자 · SK텔레콤 공식 온라인몰(T다이렉트샵) 운영·기능 개선 (Spring Boot, REST API, MSA, CI/CD 배포 자동화)</span>
+            <details class="tl-more"><summary>자세히 보기</summary><div class="tl-body">
+              <p class="tl-h">SK텔레콤 공식 온라인몰(T다이렉트샵) 운영 및 기능 개선 · 1년 8개월</p>
+              <p>신규·변경 <mark>요구사항 분석</mark>, 기존 프로세스 파악 후 <mark>시스템 설계 및 적용</mark></p>
+              <p><mark>Front(JSP/JavaScript)와 Back(Spring Boot)</mark> 기능 개발, <mark>RESTful API 설계·구현</mark>(CRUD 중심)</p>
+              <p><mark>MSA 기반 서비스</mark> 구조 운영: 기능별 독립 <mark>배포</mark> 및 <mark>API 연동</mark> 담당</p>
+              <p>외부 협력사 설계서 기반 <mark>전문</mark>(Interface) 수정, <mark>배치</mark> 프로그램 개발·수정·운영</p>
+              <p><mark>Jenkins CI/CD 파이프라인</mark> 배포 자동화, <mark>Bitbucket</mark> 소스 형상 관리</p>
+              <p><mark>Jira</mark> 업무 관리 및 협업, Datadog/MobaXterm 기반 <mark>로그·배치 모니터링</mark></p>
+              <p>운영 DB(SQL) 관리 및 성능 점검, 이슈 발생 시 긴급 대응 및 문제 해결</p>
+            </div></details>
+          </div>
+          <em>경력</em>
+        </li>
+        <li data-type="etc">
+          <time>2021 ~ 2024</time>
+          <div><strong>웹소설 창작 연재</strong><span>다수 시리즈를 기획·집필해 총 145편 게시 · 유료 콘텐츠로 수익화(Monetization)해 독자 수요를 검증, 연재 종료 후에도 롱테일 판매 지속</span></div>
+          <em>활동</em>
+        </li>
+        <li data-type="cert">
+          <time>2022 ~ 2023</time>
+          <div><strong>ServiceNow Certified System Administrator (CSA)</strong><span>IKC 재직 중 취득 · 갱신하지 않아 만료</span></div>
+          <em>자격</em>
+        </li>
+        <li data-type="work">
+          <time>2022.08 ~ 2023.08</time>
+          <div><strong>프리모리스엔젯리미티드(IKC)</strong><span>ServiceNow 플랫폼 개발 · 쿠팡 전자결재 문서와 승인 플로우 약 50개 설계·개발, 현대모터그룹 PoC, SK이노베이션 리소스 관리</span>
+            <details class="tl-more"><summary>자세히 보기</summary><div class="tl-body">
+              <p class="tl-h">ServiceNow 플랫폼 구축 · 주 사용 언어 JavaScript · 1년 1개월</p>
+              <p class="tl-h">2022.09 ~ 2023.05 · CoupangHub 프로젝트</p>
+              <p><mark>설계, 개발, 테스트, 안정화, 운영</mark> 단계에 참여하고 전자결재를 주로 담당</p>
+              <p>Coupang 내부 업무용 <mark>결재 문서 약 50개를 구성</mark>하고 승인 <mark>Flow와 Table을 설계·개발</mark></p>
+              <p>전자결재 업무를 도맡아 <mark>고객 미팅, 현황 관리, 설계, 개발, 인수인계</mark>까지 담당</p>
+              <p>Notion에 [업무 현황] · [개발 코드] · [미팅 로그 &amp; 정리] 공간을 만들어 <mark>Daily 미팅을 효율화</mark>하고, 이후 투입된 인원의 이해를 도움</p>
+              <p class="tl-h">2023.05 ~ 2023.06 · 현대모터그룹 프로젝트</p>
+              <p>PoC를 맡아 전자결재 문서와 플로우 생성</p>
+              <p class="tl-h">2023.06 ~ 2023.08 · SK이노베이션 프로젝트</p>
+              <p>리소스 관리 프로젝트의 개발·테스트에 참여, 회사 내부 리소스를 관리하는 테이블을 만들어 결재 문서와 연결</p>
+            </div></details>
+          </div>
+          <em>경력</em>
+        </li>
+        <li data-type="cert">
+          <time>2021.11</time>
+          <div><strong>정보처리산업기사</strong><span>한국산업인력공단</span></div>
+          <em>자격</em>
+        </li>
+        <li data-type="work">
+          <time>2021.02 ~ 2022.05</time>
+          <div><strong>아이티아이즈</strong><span>선임연구원 · 신용회복위원회 통합전산시스템 구축 설계·개발·테스트 (Spring, Oracle)</span>
+            <details class="tl-more"><summary>자세히 보기</summary><div class="tl-body">
+              <p class="tl-h">신용회복위원회 통합전산시스템 구축 · 파생상품실 선임연구원 · 1년 4개월</p>
+              <p><mark>Nexacro, Spring</mark>으로 화면(Front end)과 프로그램(Back end)을 모두 개발</p>
+              <p><mark>Oracle Database</mark> 테이블 컬럼을 추가·삭제하며 설계하고, 이행 <mark>프로그램의 SQL을 작성</mark>해 데이터를 이행, 운영 데이터로 정합성과 무결성 관리</p>
+              <p>OZ Report(JavaScript 기반)로 보고서 프로그램 작성</p>
+              <p>Spring과 Job Mind로 <mark>배치 프로그램과 인터페이스 연계 CMS 파일 배치</mark>를 작성하고 스케줄러에 직접 등록</p>
+              <p>MC CUBE 모듈로 정해진 규격대로 전문을 조립해 <mark>대외기관과 송수신하는 인터페이스</mark>를 작성, POSTMAN으로 전문 확인</p>
+              <p>화면·프로그램 <mark>설계서 작성 및 관리</mark>, 테스트케이스 결과서 작성, 통합 테스트에서 <mark>고객 시연</mark>, 전화·메신저로 고객과 직접 소통</p>
+              <p>프로그램을 분석하다 <mark>Garbage Code를 정리</mark>하고 파일이 없을 때 <mark>에러로 종료되던 코드를 데이터 존재 확인 후 호출</mark>되도록 수정</p>
+              <p>데이터가 다른 화면에서 잘못 보이는 문제를 찾아 리더에게 보고, 회의를 거쳐 <mark>테이블을 수정</mark></p>
+            </div></details>
+          </div>
+          <em>경력</em>
+        </li>
+        <li data-type="work">
+          <time>2020.06 ~ 2020.07</time>
+          <div><strong>씨앤에스솔루션</strong><span>RPA 현장 실습 · UiPath 자격시험 통과 및 인증</span>
+            <details class="tl-more"><summary>자세히 보기</summary><div class="tl-body">
+              <p class="tl-h">SI 사업부 사원 · 2개월</p>
+              <p>RPA developer foundation 현장 실습으로 UiPath를 학습하고, 자격시험을 통과해 인증</p>
+            </div></details>
+          </div>
+          <em>경력</em>
+        </li>
+        <li data-type="award">
+          <time>2020</time>
+          <div><strong>한이음 이브와 공모전 은상</strong><span>치매 노인을 위한 VR 리듬 게임, 단어 게임 제작</span></div>
+          <em>수상</em>
+        </li>
+        <li data-type="etc">
+          <time>2020</time>
+          <div><strong>한양여자대학교 창업경진대회</strong><span>아이템 기획·설계·개발 후 창업성 평가</span>
+            <details class="tl-more"><summary>자세히 보기</summary><div class="tl-body">
+              <p>아이템을 기획·설계·개발한 뒤 창업성을 평가받음</p>
+              <p>분석: 기획서, 요구사항 분석서, 1·2차 구매계획서</p>
+              <p>설계: SW 개발 설계서, HW 제작 설계서</p>
+              <p>개발: 개발 보고서</p>
+            </div></details>
+          </div>
+          <em>활동</em>
+        </li>
+        <li data-type="edu">
+          <time>2017 ~ 2021</time>
+          <div><strong>한양여자대학교</strong><span>컴퓨터정보과 졸업</span>
+            <details class="tl-more"><summary>자세히 보기</summary><div class="tl-body">
+              <p>컴퓨터정보과 · 학점 4.00 / 4.5</p>
+              <p>졸업작품: 한이음 이브와 공모전 출품작(치매 노인을 위한 VR 리듬 게임)</p>
+            </div></details>
+          </div>
+          <em>학력</em>
+        </li>
+      </ol>
+    </section>
+
+    <!-- STAGE 4 -->
+    <section id="projects" class="stage">
+      <h2><span class="stage-no">STAGE 4</span> PROJECTS</h2>
+      <p class="project-hint">카드의 <b>자세히 보기</b>를 누르면 아래에 상세 내용이 펼쳐집니다.</p>
+
+      <div class="project-grid">
+
+        <!-- 2020 · 졸업작품 -->
+        <article class="panel project-card" data-project="vr">
+          <img class="project-cover" src="img/scene_2.png" alt="치매 노인을 위한 VR 리듬 게임 플레이 장면" loading="lazy">
+          <div class="project-card-body">
+            <h3>치매 노인을 위한 VR 리듬 게임</h3>
+            <p class="meta">Unity · VR · 2020 · 한이음 공모전 은상</p>
+            <p class="summary">대학 졸업 과제로 제작한 치매 노인 대상 VR 리듬 게임. 팀 리더로 기획부터 발표까지 이끌었습니다.</p>
+            <div class="card-actions">
+              <button type="button" class="detail-toggle" aria-expanded="false" aria-controls="detail-vr">자세히 보기 ▼</button>
+              <a class="link-btn" href="https://youtu.be/oPtlCZsAhFA" target="_blank" rel="noopener">시연 영상 · YouTube ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2026.03 · Lovable -->
+        <article class="panel project-card" data-project="postbox">
+          <img class="project-cover" src="img/mail8.png" alt="My Little Postbox 나의 섬 화면" loading="lazy">
+          <div class="project-card-body">
+            <h3>My Little Postbox</h3>
+            <p class="meta">Lovable · Web · 2026.03</p>
+            <p class="summary">관리자와 편지를 주고받으며 재화를 쌓고, 나만의 애완새를 키우고 섬을 가꾸는 힐링 웹 게임.</p>
+            <div class="card-actions">
+              <button type="button" class="detail-toggle" aria-expanded="false" aria-controls="detail-postbox">자세히 보기 ▼</button>
+              <a class="link-btn" href="https://post-box.lovable.app/" target="_blank" rel="noopener">웹에서 플레이 · Lovable ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2026.08 · 대표작 -->
+        <article class="panel project-card" data-project="nm">
+          <img class="project-cover pixel" src="img/scene_4.png" alt="Nightshade Meadow 레스토랑 안의 주인공 캐릭터" loading="lazy">
+          <div class="project-card-body">
+            <h3>Nightshade Meadow</h3>
+            <p class="meta">Godot 4 · PC(Windows) · 2026.08 ~ 진행 중</p>
+            <p class="summary">농사·낚시·요리로 평화롭게 시작하지만, 어느 순간 마을 안의 스토커가 살인을 시작하는 힐링 × 호러 시뮬레이션.</p>
+            <div class="card-actions">
+              <button type="button" class="detail-toggle" aria-expanded="false" aria-controls="detail-nm">자세히 보기 ▼</button>
+              <a class="link-btn" href="https://newjeans99.itch.io/nightshade-meadow" target="_blank" rel="noopener">게임 플레이 · itch.io ↗</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="project-details">
+
+        <section class="panel detail" id="detail-vr" hidden>
+          <h3>치매 노인을 위한 VR 리듬 게임 <small>한이음 이브와 공모전 은상</small></h3>
+          <div class="pcards">
+            <div class="pcards-grid"><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 16 10" width="160" height="100" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="5" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="6" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="7" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="8" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="9" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="10" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="11" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="3" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="4" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="5" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="6" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="7" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="8" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="9" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="10" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="11" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="12" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="13" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="0" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="1" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="3" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="4" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="5" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="6" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="7" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="8" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="9" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="10" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="11" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="12" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="13" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="14" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="15" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="0" y="3" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="3" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="4" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="5" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="6" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="7" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="8" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="9" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="10" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="11" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="12" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="13" y="3" width="1.02" height="1.02" fill="#333c57"/><rect x="15" y="3" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="5" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="6" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="7" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="8" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="9" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="10" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="11" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="12" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="13" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="5" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="5" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="7" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="8" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="9" y="5" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="10" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="12" y="5" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="13" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="6" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="6" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="7" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="8" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="9" y="6" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="10" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="12" y="6" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="13" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="5" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="6" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="7" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="8" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="9" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="10" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="11" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="12" y="7" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="13" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="4" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="5" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="6" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="7" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="8" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="9" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="10" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="11" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="12" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="13" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="1" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="3" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="4" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="5" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="6" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="7" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="8" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="9" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="10" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="11" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="12" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="13" y="9" width="1.02" height="1.02" fill="#566c86"/><rect x="14" y="9" width="1.02" height="1.02" fill="#566c86"/></svg></div><div class="pcard-text"><p class="pcard-tag">CONCEPT</p><p class="pcard-big">리듬 + 단어 게임</p><p class="pcard-sub">곡마다 배경 공간을 달리한 VR 게임</p></div></div><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 9 8" width="108" height="96" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="0" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="1" y="1" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="8" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="0" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="1" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="8" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="0" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="1" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="8" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="1" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="5" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="5" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="5" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="5" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="5" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="6" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="6" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="6" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="7" width="1.02" height="1.02" fill="#b13e53"/></svg></div><div class="pcard-text"><p class="pcard-tag">GOAL</p><p class="pcard-big">가상의 공간을 친밀하게</p><p class="pcard-sub">어르신이 거리감 없이 다가올 수 있도록</p></div></div><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 9 10" width="108" height="120" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="1" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="4" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="3" y="4" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="4" y="4" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="5" y="4" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="6" y="4" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="1" y="5" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="2" y="5" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="3" y="5" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="4" y="5" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="5" y="5" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="6" y="5" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="7" y="5" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="1" y="6" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="2" y="6" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="3" y="6" width="1.02" height="1.02" fill="#8b93a7"/><rect x="4" y="6" width="1.02" height="1.02" fill="#8b93a7"/><rect x="5" y="6" width="1.02" height="1.02" fill="#8b93a7"/><rect x="6" y="6" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="7" y="6" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="1" y="7" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="2" y="7" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="3" y="7" width="1.02" height="1.02" fill="#8b93a7"/><rect x="4" y="7" width="1.02" height="1.02" fill="#8b93a7"/><rect x="5" y="7" width="1.02" height="1.02" fill="#8b93a7"/><rect x="6" y="7" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="7" y="7" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="1" y="8" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="2" y="8" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="3" y="8" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="4" y="8" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="5" y="8" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="6" y="8" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="7" y="8" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="2" y="9" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="3" y="9" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="4" y="9" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="5" y="9" width="1.02" height="1.02" fill="#c2c3c7"/><rect x="6" y="9" width="1.02" height="1.02" fill="#c2c3c7"/></svg></div><div class="pcard-text"><p class="pcard-tag">RESULT</p><p class="pcard-big">팀 리더 · 은상</p><p class="pcard-sub">기획 · 설계 · 일정 · 예산 · 발표<br>한이음 이브와 공모전</p></div></div></div></div>
+          <p>대학 졸업 과제로 치매 노인을 위한 VR 리듬 게임과 단어 게임을 제작했습니다. 곡마다 배경 공간을 다르게 설계해 곡의 분위기를 살리고, 어르신에게 정서적 자극을 주도록 했습니다.</p>
+          <ul class="tags"><li>Unity</li><li>C#</li><li>VR</li></ul>
+          <dl>
+            <dt>의도</dt><dd>VR의 생동감에 익숙한 한옥을 더해, 낯선 가상 세계가 아닌 친밀감을 느끼고 정서적 안정을 찾을 수 있도록</dd>
+            <dt>역할</dt><dd>리더 · 기획 · SW/HW 설계 문서 작성 · 기능별 작업 분배 · 주 단위 일정 계획 · 예산안 작성·분배 · 최종 발표의 질의응답</dd>
+            <dt>효과</dt><dd>치매 요양병원 섭외를 진행했으나, 코로나19 시기 병원 사정으로 현장 적용 불가</dd>
+          </dl>
+        </section>
+
+        <section class="panel detail" id="detail-postbox" hidden>
+          <h3>My Little Postbox <small>Lovable로 만든 웹 게임</small></h3>
+          <ul class="tags"><li>Lovable</li><li>ChatGPT</li><li>Supabase DB</li><li>Web</li><li>GitHub</li></ul>
+          <div class="pcards">
+            <div class="pcards-grid"><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 12 7" width="132" height="77" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="2" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="3" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="5" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="6" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="7" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="8" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="9" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="10" y="0" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="0" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="1" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="2" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="3" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="5" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="6" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="7" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="8" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="9" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="10" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="11" y="1" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="0" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="1" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="2" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="3" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="5" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="6" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="7" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="8" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="9" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="10" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="11" y="2" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="0" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="1" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="2" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="3" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="5" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="6" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="7" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="8" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="9" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="10" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="11" y="3" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="1" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="2" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="3" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="5" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="6" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="7" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="8" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="9" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="10" y="4" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="2" y="5" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="3" y="5" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="4" y="5" width="1.02" height="1.02" fill="#f4f4f4"/><rect x="3" y="6" width="1.02" height="1.02" fill="#f4f4f4"/></svg></div><div class="pcard-text"><p class="pcard-tag">ORIGIN</p><p class="pcard-big">꾸준히 일기를 쓰기가 어려워</p><p class="pcard-sub">작심삼일을 넘기기 위해, 일기를 편지 주고받기로 바꿔 설계</p></div></div><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 12 8" width="132" height="88" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="2" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="10" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="1" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="10" y="1" width="1.02" height="1.02" fill="#ef7d57"/><rect x="11" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="2" y="2" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="2" width="1.02" height="1.02" fill="#ef7d57"/><rect x="10" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="2" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="3" width="1.02" height="1.02" fill="#ef7d57"/><rect x="4" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="3" width="1.02" height="1.02" fill="#ef7d57"/><rect x="9" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="10" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="2" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="5" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="6" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="7" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="8" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="10" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="2" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="10" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="2" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="10" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="2" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="10" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="7" width="1.02" height="1.02" fill="#ffcd75"/></svg><svg viewBox="0 0 10 8" width="110" height="88" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="7" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="2" width="1.02" height="1.02" fill="#1a1c2c"/><rect x="5" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="7" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="8" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="7" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="8" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="4" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="4" y="4" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="5" y="4" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="6" y="4" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="7" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="8" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="5" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="3" y="5" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="4" y="5" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="5" y="5" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="6" y="5" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="7" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="7" width="1.02" height="1.02" fill="#ffcd75"/></svg></div><div class="pcard-text"><p class="pcard-tag">CONCEPT</p><p class="pcard-big">오늘은 어떤 편지가 와 있을까?</p><p class="pcard-sub">쌓이는 친밀도, 나만의 섬 꾸미기, 새가 물어다 주는 편지로 매일 열어 볼 이유를</p></div></div><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 14 9" width="168" height="108" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="0" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="3" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="7" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="8" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="9" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="10" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="11" y="0" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="12" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="13" y="0" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="1" width="1.02" height="1.02" fill="#ff9ac1"/><rect x="6" y="1" width="1.02" height="1.02" fill="#ff9ac1"/><rect x="7" y="1" width="1.02" height="1.02" fill="#ff9ac1"/><rect x="8" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="9" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="10" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="11" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="12" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="13" y="1" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="2" width="1.02" height="1.02" fill="#ff9ac1"/><rect x="5" y="2" width="1.02" height="1.02" fill="#ff9ac1"/><rect x="6" y="2" width="1.02" height="1.02" fill="#ff9ac1"/><rect x="7" y="2" width="1.02" height="1.02" fill="#ff9ac1"/><rect x="8" y="2" width="1.02" height="1.02" fill="#ff9ac1"/><rect x="9" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="10" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="11" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="12" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="13" y="2" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="3" width="1.02" height="1.02" fill="#ef7d57"/><rect x="7" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="8" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="9" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="10" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="11" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="12" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="13" y="3" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="4" width="1.02" height="1.02" fill="#38b764"/><rect x="3" y="4" width="1.02" height="1.02" fill="#38b764"/><rect x="4" y="4" width="1.02" height="1.02" fill="#38b764"/><rect x="5" y="4" width="1.02" height="1.02" fill="#38b764"/><rect x="6" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="7" y="4" width="1.02" height="1.02" fill="#38b764"/><rect x="8" y="4" width="1.02" height="1.02" fill="#38b764"/><rect x="9" y="4" width="1.02" height="1.02" fill="#38b764"/><rect x="10" y="4" width="1.02" height="1.02" fill="#a7f070"/><rect x="11" y="4" width="1.02" height="1.02" fill="#38b764"/><rect x="12" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="13" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="2" y="5" width="1.02" height="1.02" fill="#38b764"/><rect x="3" y="5" width="1.02" height="1.02" fill="#38b764"/><rect x="4" y="5" width="1.02" height="1.02" fill="#38b764"/><rect x="5" y="5" width="1.02" height="1.02" fill="#a7f070"/><rect x="6" y="5" width="1.02" height="1.02" fill="#38b764"/><rect x="7" y="5" width="1.02" height="1.02" fill="#38b764"/><rect x="8" y="5" width="1.02" height="1.02" fill="#38b764"/><rect x="9" y="5" width="1.02" height="1.02" fill="#38b764"/><rect x="10" y="5" width="1.02" height="1.02" fill="#38b764"/><rect x="11" y="5" width="1.02" height="1.02" fill="#38b764"/><rect x="12" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="13" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="6" width="1.02" height="1.02" fill="#38b764"/><rect x="5" y="6" width="1.02" height="1.02" fill="#38b764"/><rect x="6" y="6" width="1.02" height="1.02" fill="#38b764"/><rect x="7" y="6" width="1.02" height="1.02" fill="#38b764"/><rect x="8" y="6" width="1.02" height="1.02" fill="#38b764"/><rect x="9" y="6" width="1.02" height="1.02" fill="#38b764"/><rect x="10" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="11" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="12" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="13" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="4" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="10" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="11" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="12" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="13" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="8" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="2" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="6" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="7" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="8" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="9" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="10" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="11" y="8" width="1.02" height="1.02" fill="#3b5dc9"/><rect x="12" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="13" y="8" width="1.02" height="1.02" fill="#41a6f6"/></svg></div><div class="pcard-text"><p class="pcard-tag">SYSTEM</p><p class="pcard-big">바다 위에 떠 있는 나만의 섬</p><p class="pcard-sub">간단하고 작은 시뮬레이션 시스템</p></div></div></div></div>
+          <!-- 숨김: 필요하면 주석을 풀어 다시 표시합니다
+          <dl>
+            <dt>만들려고 한 것</dt><dd>친구가 교환일기를 쓰고 싶다고 해서, 쓰는 일에 재미를 붙일 수 있도록 게임 시스템을 더한 교환일기. 새와 친해지고 과일을 건네는 과정이 편지를 쓸 이유가 되도록 설계했습니다.</dd>
+            <dt>내 역할</dt><dd>기획과 시스템 규칙, 데이터 구조를 직접 정의하고 AI 도구로 구현·수정. 데이터베이스는 Supabase를 사용</dd>
+            <dt>핵심 설계</dt><dd>새 8종을 상점에서 구매해 해금하는 둥지 시스템, 새마다 개별 우편함, 선호 과일 +10 / 그 외 +1 친밀도 규칙, 상점 아이템과 친밀도 보상 아이템의 분리</dd>
+            <dt>다듬은 것</dt><dd>로그인 전후 화면 분리, 알림 배지 갱신, 모바일 편지지 깨짐 수정</dd>
+          </dl>
+          -->
+          <h4 class="term-title">▶ 플레이 화면</h4>
+          <div class="slider" data-slider data-points="#postbox-points" aria-label="My Little Postbox 화면 모음">
+            <figure><div class="shot"><img src="img/mail1.png" alt="로그인" loading="lazy"></div><figcaption>로그인</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail6.png" alt="메인" loading="lazy"></div><figcaption>메인</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail3.png" alt="편지함" loading="lazy"></div><figcaption>편지함</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail2.png" alt="편지함 상세" loading="lazy"></div><figcaption>편지함 상세</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail7.png" alt="일일 보상 포춘쿠키" loading="lazy"></div><figcaption>일일 보상 포춘쿠키</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail4.png" alt="상점 - 우표" loading="lazy"></div><figcaption>상점 - 우표</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail5.png" alt="상점 - 애완 새" loading="lazy"></div><figcaption>상점 - 애완 새</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail8.png" alt="나의 섬" loading="lazy"></div><figcaption>나의 섬</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail9.png" alt="나의 섬 - 장식 변경" loading="lazy"></div><figcaption>나의 섬 - 장식 변경</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail10.png" alt="애완 새 둥지 - 포포의 집" loading="lazy"></div><figcaption>애완 새 둥지 - 포포의 집</figcaption></figure>
+            <figure><div class="shot"><img src="img/mail11.png" alt="애완 새 둥지 - 봉봉의 집" loading="lazy"></div><figcaption>애완 새 둥지 - 봉봉의 집</figcaption></figure>
+          </div>
+          <div class="points" id="postbox-points"><h4 class="term-title">▶ 설계 포인트</h4>
+          <div class="chips" role="group" aria-label="설계 포인트">
+            <button type="button" class="chip" data-slides="2,3" data-desc="답장을 기다리게 하는 우편함 구조">리텐션 상승</button>
+            <button type="button" class="chip" data-slides="3,4" data-desc="관리자와 일반 유저가 교환 편지를 주고받음">코어 루프(Core Loop)</button>
+            <button type="button" class="chip" data-slides="8-11" data-desc="새 해금, 나만의 섬 꾸미기">메타 루프(Meta Loop)</button>
+            <button type="button" class="chip" data-slides="6,7" data-desc="편지를 쓰면 얻는 게임 재화, 상점에서 새와 가구 구매에 사용">리워드(Reward)</button>
+            <button type="button" class="chip" data-slides="5,11" data-desc="매일 열 수 있는 포춘쿠키, 하루 5번 시도할 수 있는 코인 가챠">일일 퀘스트 · 출석 보상</button>
+            <button type="button" class="chip" data-slides="4-11" data-desc="편지를 주고받는 재미를 중심에 두고, 보상은 쓰는 일을 돕는 장치로 설계함">내재적 · 외재적 동기</button>
+            <button type="button" class="chip" data-slides="3-11" data-desc="편지를 쓰고 재화를 벌어 상점에서 사용하여, 나만의 섬과 둥지를 가꿔 가는 흐름으로 이어지게 함">플로우(Flow)</button>
+            <button type="button" class="chip" data-slides="8-10" data-desc="새마다 얻을 수 있는 특별한 가구로 새 8종 전체 해금을 유도">수집 욕구 · 컬렉션</button>
+            <button type="button" class="chip" data-slides="8-10" data-desc="새와의 친밀도가 쌓이고, 얻은 가구로 나만의 섬이 채워짐">성장감(Progression)</button>
+            <button type="button" class="chip" data-slides="1,2" data-desc="로그인 전후 화면을 분리해 처음 들어온 유저가 시작 지점을 바로 알 수 있게 함">온보딩(Onboarding)</button>
+            <button type="button" class="chip" data-slides="4-7" data-desc="소스는 편지 작성과 포춘쿠키, 싱크는 상점에서의 새와 가구 구매">싱크(Sink)와 소스(Source)</button>
+            <button type="button" class="chip" data-slides="10" data-desc="선호 과일 +10 / 그 외 +1로 친밀도가 오르는 속도에 차이를 둠">밸런스</button>
+            <button type="button" class="chip" data-slides="6,7" data-desc="편지로 번 재화를 우표(3코인) · 편지지(5코인)부터 새(50~500코인)까지 가격대를 나눠 단계적으로 쓰게 함">게임 경제</button>
+          </div>
+          <p class="chip-desc" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <section class="panel detail" id="detail-nm" hidden>
+          <h3>Nightshade Meadow <small>2D 픽셀아트 힐링 시뮬레이션 × 호러</small></h3>
+          <ul class="tags"><li>Claude Code</li><li>Godot 4</li><li>GDScript</li><li>JSON</li><li>PC(Windows)</li><li>itch.io</li></ul>
+          <div class="pcards">
+            <div class="pcards-grid"><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 8 10" width="72" height="90" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="3" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="4" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="5" y="0" width="1.02" height="1.02" fill="#566c86"/><rect x="1" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="1" width="1.02" height="1.02" fill="#566c86"/><rect x="1" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="2" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="4" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="7" y="5" width="1.02" height="1.02" fill="#41a6f6"/><rect x="0" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="7" y="6" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="3" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="4" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="7" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="8" width="1.02" height="1.02" fill="#41a6f6"/><rect x="1" y="9" width="1.02" height="1.02" fill="#41a6f6"/><rect x="2" y="9" width="1.02" height="1.02" fill="#41a6f6"/><rect x="5" y="9" width="1.02" height="1.02" fill="#41a6f6"/><rect x="6" y="9" width="1.02" height="1.02" fill="#41a6f6"/></svg><svg viewBox="0 0 8 10" width="72" height="90" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="0" width="1.02" height="1.02" fill="#5d275d"/><rect x="3" y="0" width="1.02" height="1.02" fill="#5d275d"/><rect x="4" y="0" width="1.02" height="1.02" fill="#5d275d"/><rect x="5" y="0" width="1.02" height="1.02" fill="#5d275d"/><rect x="1" y="1" width="1.02" height="1.02" fill="#5d275d"/><rect x="2" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="1" width="1.02" height="1.02" fill="#5d275d"/><rect x="1" y="2" width="1.02" height="1.02" fill="#5d275d"/><rect x="2" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="2" width="1.02" height="1.02" fill="#5d275d"/><rect x="2" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="4" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="5" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="6" y="4" width="1.02" height="1.02" fill="#ef7d57"/><rect x="0" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="1" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="4" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="5" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="6" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="7" y="5" width="1.02" height="1.02" fill="#ef7d57"/><rect x="0" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="1" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="4" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="5" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="6" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="7" y="6" width="1.02" height="1.02" fill="#ef7d57"/><rect x="1" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="3" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="4" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="5" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="6" y="7" width="1.02" height="1.02" fill="#ef7d57"/><rect x="1" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="5" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="6" y="8" width="1.02" height="1.02" fill="#ef7d57"/><rect x="1" y="9" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="9" width="1.02" height="1.02" fill="#ef7d57"/><rect x="5" y="9" width="1.02" height="1.02" fill="#ef7d57"/><rect x="6" y="9" width="1.02" height="1.02" fill="#ef7d57"/></svg><svg viewBox="0 0 8 10" width="72" height="90" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="0" width="1.02" height="1.02" fill="#333c57"/><rect x="3" y="0" width="1.02" height="1.02" fill="#333c57"/><rect x="4" y="0" width="1.02" height="1.02" fill="#333c57"/><rect x="5" y="0" width="1.02" height="1.02" fill="#333c57"/><rect x="1" y="1" width="1.02" height="1.02" fill="#333c57"/><rect x="2" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="1" width="1.02" height="1.02" fill="#333c57"/><rect x="1" y="2" width="1.02" height="1.02" fill="#333c57"/><rect x="2" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="2" width="1.02" height="1.02" fill="#333c57"/><rect x="2" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="4" width="1.02" height="1.02" fill="#a7f070"/><rect x="2" y="4" width="1.02" height="1.02" fill="#a7f070"/><rect x="3" y="4" width="1.02" height="1.02" fill="#a7f070"/><rect x="4" y="4" width="1.02" height="1.02" fill="#a7f070"/><rect x="5" y="4" width="1.02" height="1.02" fill="#a7f070"/><rect x="6" y="4" width="1.02" height="1.02" fill="#a7f070"/><rect x="0" y="5" width="1.02" height="1.02" fill="#a7f070"/><rect x="1" y="5" width="1.02" height="1.02" fill="#a7f070"/><rect x="2" y="5" width="1.02" height="1.02" fill="#a7f070"/><rect x="3" y="5" width="1.02" height="1.02" fill="#a7f070"/><rect x="4" y="5" width="1.02" height="1.02" fill="#a7f070"/><rect x="5" y="5" width="1.02" height="1.02" fill="#a7f070"/><rect x="6" y="5" width="1.02" height="1.02" fill="#a7f070"/><rect x="7" y="5" width="1.02" height="1.02" fill="#a7f070"/><rect x="0" y="6" width="1.02" height="1.02" fill="#a7f070"/><rect x="1" y="6" width="1.02" height="1.02" fill="#a7f070"/><rect x="2" y="6" width="1.02" height="1.02" fill="#a7f070"/><rect x="3" y="6" width="1.02" height="1.02" fill="#a7f070"/><rect x="4" y="6" width="1.02" height="1.02" fill="#a7f070"/><rect x="5" y="6" width="1.02" height="1.02" fill="#a7f070"/><rect x="6" y="6" width="1.02" height="1.02" fill="#a7f070"/><rect x="7" y="6" width="1.02" height="1.02" fill="#a7f070"/><rect x="1" y="7" width="1.02" height="1.02" fill="#a7f070"/><rect x="2" y="7" width="1.02" height="1.02" fill="#a7f070"/><rect x="3" y="7" width="1.02" height="1.02" fill="#a7f070"/><rect x="4" y="7" width="1.02" height="1.02" fill="#a7f070"/><rect x="5" y="7" width="1.02" height="1.02" fill="#a7f070"/><rect x="6" y="7" width="1.02" height="1.02" fill="#a7f070"/><rect x="1" y="8" width="1.02" height="1.02" fill="#a7f070"/><rect x="2" y="8" width="1.02" height="1.02" fill="#a7f070"/><rect x="5" y="8" width="1.02" height="1.02" fill="#a7f070"/><rect x="6" y="8" width="1.02" height="1.02" fill="#a7f070"/><rect x="1" y="9" width="1.02" height="1.02" fill="#a7f070"/><rect x="2" y="9" width="1.02" height="1.02" fill="#a7f070"/><rect x="5" y="9" width="1.02" height="1.02" fill="#a7f070"/><rect x="6" y="9" width="1.02" height="1.02" fill="#a7f070"/></svg></div><div class="pcard-text"><p class="pcard-tag">PERSONA</p><p class="pcard-big">성격이 살아 있는 NPC</p><p class="pcard-sub">뚜렷한 성격 특징, 그에 맞는 대사 약 2,500줄과 이벤트</p></div></div><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 9 8" width="108" height="96" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="0" width="1.02" height="1.02" fill="#b13e53"/><rect x="0" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="1" y="1" width="1.02" height="1.02" fill="#ef7d57"/><rect x="2" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="1" width="1.02" height="1.02" fill="#1a1c2c"/><rect x="5" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="8" y="1" width="1.02" height="1.02" fill="#b13e53"/><rect x="0" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="1" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="2" width="1.02" height="1.02" fill="#1a1c2c"/><rect x="6" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="8" y="2" width="1.02" height="1.02" fill="#b13e53"/><rect x="0" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="1" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="3" width="1.02" height="1.02" fill="#1a1c2c"/><rect x="5" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="6" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="8" y="3" width="1.02" height="1.02" fill="#b13e53"/><rect x="1" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="4" width="1.02" height="1.02" fill="#1a1c2c"/><rect x="6" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="7" y="4" width="1.02" height="1.02" fill="#b13e53"/><rect x="2" y="5" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="5" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="5" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="5" width="1.02" height="1.02" fill="#1a1c2c"/><rect x="6" y="5" width="1.02" height="1.02" fill="#b13e53"/><rect x="3" y="6" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="6" width="1.02" height="1.02" fill="#b13e53"/><rect x="5" y="6" width="1.02" height="1.02" fill="#b13e53"/><rect x="4" y="7" width="1.02" height="1.02" fill="#b13e53"/></svg></div><div class="pcard-text"><p class="pcard-tag">FLAW</p><p class="pcard-big">정서적 몰입</p><p class="pcard-sub">누구나 가진 결핍을 인물에 담아, 유저가 공감하고 마음이 가도록 설계</p></div></div><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 10 8" width="120" height="96" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="0" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="1" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="1" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="2" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="2" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="3" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="9" y="4" width="1.02" height="1.02" fill="#ffcd75"/><rect x="0" y="5" width="1.02" height="1.02" fill="#566c86"/><rect x="1" y="5" width="1.02" height="1.02" fill="#566c86"/><rect x="4" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="5" width="1.02" height="1.02" fill="#ffcd75"/><rect x="8" y="5" width="1.02" height="1.02" fill="#566c86"/><rect x="9" y="5" width="1.02" height="1.02" fill="#566c86"/><rect x="1" y="6" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="6" width="1.02" height="1.02" fill="#566c86"/><rect x="4" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="6" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="6" width="1.02" height="1.02" fill="#566c86"/><rect x="8" y="6" width="1.02" height="1.02" fill="#566c86"/><rect x="2" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="3" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="4" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="5" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="6" y="7" width="1.02" height="1.02" fill="#ffcd75"/><rect x="7" y="7" width="1.02" height="1.02" fill="#ffcd75"/></svg></div><div class="pcard-text"><p class="pcard-tag">BALANCE</p><p class="pcard-big">직접 플레이하며 조정</p><p class="pcard-sub">호감도 · 경제 수치 · 성능</p></div></div><div class="pcard"><div class="pcard-art"><svg viewBox="0 0 130 86" width="150" height="100" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="0" width="16" height="16" fill="#1a1c2c" stroke="#a7f070" stroke-width="2"/><path d="M3 8 l4 4 l7 -9" fill="none" stroke="#a7f070" stroke-width="3"/><rect x="26" y="3" width="96" height="10" fill="#566c86"/><rect x="0" y="22" width="16" height="16" fill="#1a1c2c" stroke="#a7f070" stroke-width="2"/><path d="M3 30 l4 4 l7 -9" fill="none" stroke="#a7f070" stroke-width="3"/><rect x="26" y="25" width="82" height="10" fill="#566c86"/><rect x="0" y="44" width="16" height="16" fill="#1a1c2c" stroke="#a7f070" stroke-width="2"/><path d="M3 52 l4 4 l7 -9" fill="none" stroke="#a7f070" stroke-width="3"/><rect x="26" y="47" width="68" height="10" fill="#566c86"/><rect x="0" y="66" width="16" height="16" fill="#1a1c2c" stroke="#a7f070" stroke-width="2"/><path d="M3 74 l4 4 l7 -9" fill="none" stroke="#a7f070" stroke-width="3"/><rect x="26" y="69" width="54" height="10" fill="#566c86"/></svg></div><div class="pcard-text"><p class="pcard-tag">FEEDBACK</p><p class="pcard-big">40+ 수정 → 체크리스트</p><p class="pcard-sub">받은 의견은 꼼꼼하게<br>정리하여 반영</p></div></div></div></div>
+          <!-- 숨김: <p class="lead only-dev">농사·낚시·요리로 평화롭게 시작하지만, 어느 순간 마을 안의 스토커가 살인을 시작하는 게임입니다. 호감도, 선택, 추리, 3종 엔딩이 하나의 데이터 구조 위에서 돌아가도록 설계했습니다.</p> -->
+          <!-- 숨김: <p class="lead only-design">농사·낚시·요리로 평화롭게 시작하지만, 어느 순간 마을 안의 스토커가 살인을 시작하는 게임입니다. "NPC를 콘텐츠가 아니라 관계로 느끼게 한다"는 목표 아래 호감도, 선택, 추리, 엔딩을 하나의 경험으로 설계했습니다.</p> -->
+          <ul class="stats">
+            <li><b>16</b>시스템 기획서</li>
+            <li><b>13</b>NPC 설정</li>
+            <li><b>20</b>맵 설계</li>
+            <li><b>3</b>엔딩 분기</li>
+            <li><b>48</b>씬</li>
+            <li><b>30K</b>줄 GDScript</li>
+          </ul>
+          <!-- 숨김: 필요하면 주석을 풀어 다시 표시합니다
+          <h4>▶ 만들려고 한 것</h4>
+          <dl>
+            <dt>캐릭터</dt><dd>한 명 한 명에게 현실에서 마주칠 법한 성격을 부여해, 마을 사람들이 설정이 아니라 실제 이웃처럼 느껴지게 했습니다.</dd>
+            <dt>애착과 공감</dt><dd>캐릭터마다 결핍을 하나씩 넣어, 플레이어가 그 사람을 이해하고 애착을 갖게 했습니다. 이 애착이 호러 파트에서 선택의 무게가 됩니다.</dd>
+            <dt>밸런스</dt><dd>호감도와 경제 수치는 계산만으로 맞추지 않고 직접 많이 플레이하며 조정했습니다.</dd>
+            <dt>피드백 반영</dt><dd>테스트에서 40가지가 넘는 수정 의견을 받아 체크리스트로 정리하고 하나씩 반영했습니다.</dd>
+          </dl>
+          -->
+          <div class="design-tabs" data-tabs>
+            <h4 class="term-title">▶ 플레이 영상</h4>
+            <div class="tab-buttons" role="tablist">
+              <button type="button" role="tab" id="nm-tab-play" aria-controls="nm-panel-play" aria-selected="true">게임플레이</button>
+              <button type="button" role="tab" id="nm-tab-story" aria-controls="nm-panel-story" aria-selected="false">관계 · 서사</button>
+              <!-- 숨김: 공포 영상을 찍으면 주석을 풀어 다시 표시합니다
+              <button type="button" role="tab" id="nm-tab-horror" aria-controls="nm-panel-horror" aria-selected="false">공포</button>
+              -->
+            </div>
+            <div class="tab-panel" role="tabpanel" id="nm-panel-play" aria-labelledby="nm-tab-play">
+              <div class="term-wrap"><table class="term-table"><tbody>
+                <tr><td>리텐션 상승</td><td>하루 안에 모든 걸 할 수 없다는 시간 압박으로 매일 선택을 하게 만듦</td></tr>
+                <tr><td>코어 루프(Core Loop)</td><td>농사·낚시로 재료를 모아 요리하고, 레스토랑에서 판매해 수입을 얻음</td></tr>
+                <tr><td>메타 루프(Meta Loop)</td><td>인벤토리 확장(2,000G → 15,000G)과 집 확장(20,000G / 50,000G)을 단계별 목표로 배치</td></tr>
+                <tr><td>싱크(Sink)와 소스(Source)</td><td>소스는 레스토랑 수입으로 단일화, 싱크는 인벤토리·집 확장</td></tr>
+                <tr><td>게임 경제</td><td>수입원을 레스토랑 하나로 단일화해 경제 흐름을 단순하게 함</td></tr>
+                <tr><td>밸런스</td><td>호감도와 경제 수치를 직접 많이 플레이하며 조정</td></tr>
+                <tr><td>플로우(Flow)</td><td>재료 2개 조합에 취향과 레시피 발견 요소를 더해 반복 작업이 되지 않게 함</td></tr>
+              </tbody></table></div>
+              <div class="slider slider-video" data-slider aria-label="게임플레이 설계 영상">
+                <figure><div class="shot"><video src="video/파밍2.mp4#t=0.5" controls preload="metadata" playsinline></video></div><figcaption>게임플레이</figcaption></figure>
+                <figure><div class="shot"><video src="video/레스토랑.mp4#t=0.5" controls preload="metadata" playsinline></video></div><figcaption>레스토랑 운영</figcaption></figure>
+                <figure><div class="shot"><video src="video/가구.mp4#t=0.5" controls preload="metadata" playsinline></video></div><figcaption>하우징 · 인테리어</figcaption></figure>
+              </div>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="nm-panel-story" aria-labelledby="nm-tab-story" hidden>
+              <div class="term-wrap"><table class="term-table"><tbody>
+                <tr><td>서사적 몰입(Narrative Immersion)</td><td>NPC마다 다른 성격과 대사를 주어, 마을 사람들을 설정이 아니라 실제 사람처럼 느끼게 함</td></tr>
+                <tr><td>대사 변주(반복 피로 방지)</td><td>요일마다 NPC당 2~3개의 대사를 준비해, 같은 말을 되풀이한다고 느끼지 않게 함</td></tr>
+                <tr><td>리워드(Reward)</td><td>대화 +1, 선물 +3, 좋아하는 요리 +5로 호감도가 오르고, 100에서 '추억의 물건'을 받음</td></tr>
+                <tr><td>일일 퀘스트 · 출석 보상</td><td>일차마다 새 이메일과 이벤트가 열려 매일 확인할 이유를 만듦</td></tr>
+                <tr><td>내재적 · 외재적 동기</td><td>NPC마다 결핍을 넣어 애착을 만들고, 이 애착이 호러 파트의 선택에 무게를 줌</td></tr>
+                <tr><td>수집 욕구 · 컬렉션</td><td>NPC의 취향과 레시피를 플레이어가 직접 발견하게 함</td></tr>
+                <tr><td>성장감(Progression)</td><td>호감도를 숫자 대신 진행 바로 보여 줘 관계가 깊어지는 과정을 체감하게 함</td></tr>
+                <tr><td>온보딩(Onboarding)</td><td>이메일 노출 시점을 분산해 1일차에 몰아서 보여 주지 않음</td></tr>
+                <tr><td>재플레이 동기</td><td>엔딩 3갈래로 다른 선택의 결과를 확인할 이유를 만듦</td></tr>
+              </tbody></table></div>
+              <div class="slider slider-video" data-slider aria-label="관계 · 서사 영상">
+                <figure><div class="shot"><video src="video/컬렉션.mp4#t=0.5" controls preload="metadata" playsinline></video></div><figcaption>도감 · 컬렉션</figcaption></figure>
+                <figure><div class="shot"><video src="video/관계서사.mp4#t=0.5" controls preload="metadata" playsinline></video></div><figcaption>관계 · 서사</figcaption></figure>
+              </div>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="nm-panel-horror" aria-labelledby="nm-tab-horror" hidden>
+              <div class="term-wrap"><table class="term-table"><tbody>
+                <tr><td>장르 반전</td><td>첫 살인 전까지는 힐링 게임처럼 보이게 하고, 스토커도 평범한 NPC처럼 행동하게 함</td></tr>
+                <tr><td>관계 = 위험</td><td>호감도가 120에 도달하면 살해 대상으로 등록될 수 있어, 가까워질수록 상대가 위험해짐</td></tr>
+                <tr><td>보지 못하는 사건</td><td>비 오는 날 오후 10시, 플레이어와 스토커·피해자가 서로 다른 맵에 있을 때만 사건이 발생해 현장을 보지 못하고 알리바이로 추리하게 함</td></tr>
+                <tr><td>정보 조작</td><td>스토커가 사칭 메일을 보내 플레이어의 판단을 흔듦</td></tr>
+                <tr><td>선택의 무게</td><td>범인을 제거할지, 경찰에 맡길지, 무고한 NPC를 독으로 죽일지 선택하고 오판 시 결과가 갈림</td></tr>
+                <tr><td>상실 (FOMO)</td><td>NPC가 살해되면 다시 만날 수 없어, 지금 관계를 쌓아야 한다는 긴장을 줌</td></tr>
+              </tbody></table></div>
+            </div>
+          </div>
+          <!-- DESIGN MODE -->
+          <h4 class="only-design nm-off">▶ 기획 포인트</h4>
+          <div class="case-list only-design nm-off">
+            <details class="case-item" name="case-design"><summary>의도된 장르 반전: 플레이어가 공포를 모르는 상태에서 시작</summary><div class="case-body">첫 살인 전까지는 평화로운 힐링 게임으로 보이게 하는 것이 설계 원칙입니다. 스토커는 일반 NPC와 똑같이 행동하고, 초반 메일도 안부 인사 수준이라 이후의 변화가 더 크게 느껴집니다.</div></details>
+            <details class="case-item" name="case-design"><summary>호감도 = 관계, 그리고 위험</summary><div class="case-body">호감도 0~150 구간에서 대화 +1, 선물 +3, 좋아하는 요리 +5, 싫어하는 요리 −5로 행동마다 의미를 달리했습니다. 100에서 '추억의 물건'을 받고, 120에 도달하면 살해 대상으로 등록될 수 있습니다. 가까워질수록 상대가 위험해지는 구조라서 플레이어가 호감도를 올릴 때마다 고민하게 됩니다. 정확한 수치는 숨기고 진행 바만 보여 줍니다.</div></details>
+            <details class="case-item" name="case-design"><summary>살인 조건으로 만든 추리 구조</summary><div class="case-body">비 오는 날 오후 10시, 플레이어·스토커·피해자가 서로 다른 맵에 있을 때만 사건이 발생합니다. 플레이어는 현장을 보지 못하고, 폴리가 알려 주는 알리바이(각 NPC의 일정 데이터로 자동 생성)를 대조해 범인을 좁혀 갑니다.</div></details>
+            <details class="case-item" name="case-design"><summary>선택과 엔딩 3종: 진실 / 체포 / 공범</summary><div class="case-body">범인을 직접 제거할지, 경찰에 맡길지, 무고한 NPC를 독으로 죽일지에 따라 엔딩이 갈립니다. 엔딩 이후에도 플레이를 이어 가며 그 선택의 결과와 함께 살게 하는 것이 설계 목표입니다. ("어떤 엔딩을 봤는가"보다 "어떤 사람이 되었는가")</div></details>
+            <details class="case-item" name="case-design"><summary>요리 시스템 재설계: 얕은 루프를 깊게</summary><div class="case-body"><em>문제</em> 재료 2개를 고르는 클릭 한두 번으로 끝나서 금방 반복 작업이 됨 →
+              <em>원칙</em> "NPC는 주문하지 않는다 / 취향과 레시피는 플레이어가 발견한다 / 재료는 2개"를 불변 조건으로 고정 →
+              <em>해결</em> 재료별 조리기구, 실제 시간 조리, 식탁 위 접시에서 합치는 구조로 변경 →
+              <b>미리 만들어 쌓아두는 사재기를 구조적으로 차단</b>. 완전 차단이 불가능한 부분은 "영업 중에만 조리기구 사용"이라는 느슨한 제약으로 타협했습니다.</div></details>
+            <details class="case-item" name="case-design"><summary>경제와 진행 곡선</summary><div class="case-body">수입원을 레스토랑으로 단일화하고, 인벤토리 확장(2,000G → 15,000G)과 집 확장(20,000G / 50,000G)을 단계별 목표로 배치했습니다. "하루 안에 모든 걸 할 수 없다"는 시간 압박으로 매일 선택을 하게 만듭니다.</div></details>
+            <details class="case-item" name="case-design"><summary>문서와 플레이테스트로 굴린 개발</summary><div class="case-body">일차별 작업 계획, 플레이테스트 피드백 체크리스트, 번복된 결정과 교훈을 기록하며 기획을 갱신했습니다.</div></details>
+          </div>
+
+          <!-- DEV MODE -->
+          <div class="work-tabs" data-tabs>
+            <div class="tab-buttons" role="tablist" aria-label="작업 기록">
+              <button type="button" role="tab" id="work-tab-ts" aria-controls="work-panel-ts" aria-selected="true">트러블슈팅 &amp; 최적화</button>
+              <button type="button" role="tab" id="work-tab-core" aria-controls="work-panel-core" aria-selected="false">핵심 구현</button>
+              <button type="button" role="tab" id="work-tab-play" aria-controls="work-panel-play" aria-selected="false">플레이테스트 반영</button>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="work-panel-ts" aria-labelledby="work-tab-ts">
+              <div class="split" data-split>
+              <div class="split-list">
+                <button type="button" class="split-item" data-pane="sp-ts-1" aria-pressed="false">타일 렌더링 구조 전환</button>
+                <button type="button" class="split-item" data-pane="sp-ts-2" aria-pressed="false">로딩 직후 프레임 스파이크(히치) 개선</button>
+                <button type="button" class="split-item" data-pane="sp-ts-3" aria-pressed="false">UI 창을 닫은 후 클릭이 씹히는 버그</button>
+                <button type="button" class="split-item" data-pane="sp-ts-5" aria-pressed="false">키 하나에 중복 핸들러 반응</button>
+                <button type="button" class="split-item" data-pane="sp-ts-6" aria-pressed="false">한글 입력 오류</button>
+              </div>
+              <div class="split-view">
+                <article class="split-pane" id="sp-ts-1" hidden>
+                  <h5 class="sp-title">타일 렌더링 구조 전환</h5>
+                  <p class="sp-line">타일 전부가 노드였던 구조 → TileMapLayer 수정</p>
+
+              <div class="step"><em>증상</em><span>물 타일에 셰이더로 반짝임 효과를 넣자 게임이 버벅거렸습니다.</span></div>
+              <div class="step"><em>원인</em><span>원인을 확인하다가, 타일이 개별 노드(<code>Sprite2D</code>)로 하나씩 따로 그려지고 있다는 것을 발견했습니다.</span></div>
+              <div class="step"><em>해결</em><span>20개 맵 전부 <code>TileMapLayer</code>로 전환했습니다. 한 번에 바꾸지 않고 실험적으로 맵 하나를 적용했고, 등록한 맵만 TileMapLayer 방식으로 그리고, 나머지 맵은 Sprite2D 방식을 그대로 쓰게 해서 위험을 나눴습니다. 작업 전에는 git 커밋으로 롤백 지점을 만들어 두었습니다.</span></div>
+              <div class="step"><em>결과</em><span>타일 ID와 칸 좌표가 TileMapLayer 방식과 Sprite2D 방식에서 1:1로 일치하고, 충돌 판정 불일치는 <b>0건</b>이었습니다.</span></div>
+            
+                </article>
+                <article class="split-pane" id="sp-ts-2" hidden>
+                  <h5 class="sp-title">로딩 직후 프레임 스파이크(히치) 개선</h5>
+                  <p class="sp-line">보이지 않는 맵까지 렌더링하던 것이 원인이었습니다</p>
+                  <span class="wc-bars" aria-hidden="true"><span class="wc-bar"><i style="--w:100%"></i><em>700ms</em></span><span class="wc-bar"><i style="--w:12%"></i><em>85ms</em></span></span>
+
+              
+              <div class="step"><em>증상</em><span>맵 로딩 직후 처음 움직이면 잠깐 멈추는 성능 이상이 발생했습니다.</span></div>
+              <div class="step"><em>원인</em><span>NPC 스케줄 엔진이 첫 1분 틱에 모든 NPC의 이동시간을 미리 계산하느라, <em>눈에 보이지 않는 맵까지 텍스처째 렌더링</em>하고 있었습니다. 한 프레임에 최대 38회였습니다.</span></div>
+              <div class="step"><em>해결</em><span><code>load_map()</code>에 <code>render</code> 플래그를 추가했습니다. <code>false</code>면 눈에 보이는 그림은 만들지 않고 충돌·길찾기 데이터만 만들며, 맵별 계산 결과도 캐싱했습니다.</span></div>
+              <div class="step"><em>결과</em><span>약 <b>700ms → 85ms</b>(약 88% 감소)로 줄었고, 반환값이 수정 전과 정확히 일치함을 확인했습니다.</span></div>
+            
+                </article>
+                <article class="split-pane" id="sp-ts-3" hidden>
+                  <h5 class="sp-title">UI 창을 닫은 후 클릭이 씹히는 버그</h5>
+                  <p class="sp-line">안 보이는 UI가 클릭을 가로채던 문제를, 흩어진 처리 함수를 한 곳으로 모아 재발을 막았습니다</p>
+
+              <div class="step"><em>증상</em><span>UI 창을 닫았는데도 화면 클릭이 먹히지 않는 문제가 여러 화면에서 반복해서 발생했습니다.</span></div>
+              <div class="step"><em>원인</em><span>닫힌 화면에 보이지 않는 UI가 <code>mouse_filter</code> 기본값(STOP)으로 남아 클릭을 가로채고 있었습니다. UI 창을 하나씩 추가하면서 이 처리 함수를 화면마다 복사해 두다 보니(코드 중복) 화면마다 빠지거나 다르게 되어 있어(예: 상점은 정해진 노드에만 수동 적용) 같은 버그가 재발했습니다. 옷장의 <code>ColorPicker</code>는 자체 드래그 상태를 들고 있어 <code>mouse_filter</code>만으로는 풀리지 않았습니다.</span></div>
+              <div class="step"><em>해결</em><span>발견되는 화면마다 같은 방식으로 맞췄고, 옷장은 닫을 때 <code>visible</code>까지 함께 꺼서 해결했습니다. 열려 있는 화면 목록이 바뀔 때만 출력하는 진단용 디버그 로그도 상시 넣었습니다. 또한 원인 패턴을 문서(체크리스트)로 남기고 헤드리스 테스트로 검증하는 절차를 만들었습니다.</span></div>
+              <div class="step"><em>결과</em><span>이후 UI 화면 28개에 복사돼 있던 처리 함수를 <b>공통 유틸리티 함수 하나로 통합</b>(중복 제거 리팩토링)해, 새 창을 추가해도 같은 실수가 반복되지 않는 구조로 바꿨습니다. 리팩토링 전후의 <code>mouse_filter</code> 상태를 비교해 동작이 동일함을 확인했습니다(회귀 검증).</span></div>
+            
+                </article>
+                <article class="split-pane" id="sp-ts-5" hidden>
+                  <h5 class="sp-title">키 하나에 중복 핸들러 반응</h5>
+                  <p class="sp-line">인벤토리를 닫는 ESC에 종료 확인창까지 같이 뜨던 문제입니다</p>
+
+              <div class="step"><em>증상</em><span>인벤토리를 ESC로 닫으면 닫히자마자 종료 확인창까지 같이 떴습니다. 이는 사용자가 의도한 움직임이 아니므로 버그에 해당합니다.</span></div>
+              <div class="step"><em>원인</em><span>같은 키 입력에 인벤토리를 닫는 핸들러와 종료 확인을 띄우는 핸들러가 둘 다 반응했는데, 어느 쪽도 입력 이벤트를 "처리됨"으로 소비(consume)하지 않아 경쟁 상태가 생겼습니다.</span></div>
+              <div class="step"><em>해결</em><span>모달이 열려 있었는지를 "이전 프레임 기준"으로 따로 캐싱해 판단하게 해, 같은 입력이 두 번 처리되지 않게 했습니다.</span></div>
+              <div class="step"><em>결과</em><span>인벤토리를 닫는 ESC에는 종료 확인창이 함께 뜨지 않고, 아무 창도 열려 있지 않을 때만 종료 확인이 뜹니다.</span></div>
+            
+                </article>
+                <article class="split-pane" id="sp-ts-6" hidden>
+                  <h5 class="sp-title">한글 입력 오류</h5>
+                  <p class="sp-line">엔진의 미해결 버그라, 고치지 않기로 한 판단입니다</p>
+
+              <div class="step"><em>증상</em><span>메일을 쓸 때 한글 마지막 글자가 잘려 입력되는 문제가 발생했습니다.</span></div>
+              <div class="step"><em>원인</em><span>한글 IME는 마지막 글자가 조합 중인 상태에서 스페이스바 같은 추가 입력이 있어야 입력을 확정하는데, 그 상태로 포커스가 옮겨지면 글자가 사라졌습니다. 재현 조건을 직접 확인해 보니 Godot 엔진 자체의 미해결 버그(<code>godot#102853</code>, Windows + 한글, 4.3에서도 재현)였습니다.</span></div>
+              <div class="step"><em>결과</em><span>나머지는 입력 이벤트를 임의로 주입하는 식의 변칙적인 우회(워크어라운드)가 필요해서 <b>고치지 않기로 결정</b>했습니다. 엔진이 고쳐야 할 문제를 임시방편으로 덮지 않았습니다.</span></div>
+            
+                </article>
+              </div>
+            </div>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="work-panel-core" aria-labelledby="work-tab-core" hidden>
+              <div class="split" data-split>
+              <div class="split-list">
+                <button type="button" class="split-item" data-pane="sp-core-1" aria-pressed="false">데이터 주도 설계</button>
+                <button type="button" class="split-item" data-pane="sp-core-2" aria-pressed="false">호러 시스템 설계·구현</button>
+                <button type="button" class="split-item" data-pane="sp-core-3" aria-pressed="false">itch.io 출시</button>
+              </div>
+              <div class="split-view">
+                <article class="split-pane" id="sp-core-1" hidden>
+                  <h5 class="sp-title">데이터 주도 설계</h5>
+NPC 대사, 이벤트, 상점, 레시피, 편지를 <b>JSON으로 분리</b>해 데이터와 로직을 나눴습니다. 이벤트 발생 조건(호감도, 날짜, 보유 아이템, NPC 생존, 살인 발생 여부, 플래그)도 데이터로 조합하게 해, 코드 수정 없이 콘텐츠를 추가할 수 있습니다.
+                </article>
+                                <article class="split-pane" id="sp-core-2" hidden>
+                  <h5 class="sp-title">호러 시스템 설계·구현</h5>
+                  <p class="sp-line">시간·날짜 신호로 살인과 엔딩의 진행 상태를 관리하는 구조입니다</p>
+                  <div class="step"><em>구조</em><span>살인·엔딩 로직은 <code>murder_manager.gd</code> 한 곳이 맡고, 화면 연출(초상화, UI, 메일)은 <code>murder_occurred</code> 같은 시그널을 받아 따로 처리하도록 분리했습니다.</span></div>
+                  <div class="step"><em>상태 표현</em><span>진행 상태를 <code>_murder_count</code>(살인 횟수), <code>_ending_achieved</code>(엔딩 종류), <code>_pending_poison_victim</code>(독살 대기 대상), 후보 대기열 같은 값으로 나눠 들고, 값의 조합으로 지금이 어느 단계인지 판단합니다.</span></div>
+                  <div class="step"><em>상태 전환</em><span>시간(매 분)과 날짜 변경 신호를 구독해, 신호가 올 때만 조건을 검사하고 상태를 바꾸는 <b>이벤트 기반</b> 구조입니다.</span></div>
+                  <div class="step"><em>조건 검사</em><span>살인 판정은 <b>가드 조건</b>을 순서대로 검사합니다(엔딩 달성 여부 → 쿨다운 → 대상 후보 → 날씨 → 플레이어 위치). 하나라도 통과하지 못하면 바로 종료하고 다음 날 다시 검사합니다.</span></div>
+                  <div class="step"><em>지연 확정</em><span>독살은 서빙한 날에는 대기 대상으로만 기록하고, 날짜가 바뀌는 시점에 사망 처리와 엔딩 연출을 시작합니다.</span></div>
+                  <div class="step"><em>저장과 재개</em><span>상태 값을 세이브에 저장하고, 엔딩 컷신 도중 종료해도 "엔딩은 확정됐지만 마무리를 못 봤다"는 완료 플래그로 구분해 다음 접속 때 컷신을 이어서 재생합니다.</span></div>
+                  <div class="step"><em>테스트</em><span>비·22시·위치 조건을 기다리지 않고 살인과 엔딩을 바로 일으키는 디버그 함수를 두어, 엔딩 3종 경로를 반복 검증했습니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-core-3" hidden>
+                  <h5 class="sp-title">itch.io 출시</h5>
+                  <p class="sp-line">5개 언어와 세이브·키 설정을 갖춰 itch.io에 출시했습니다</p>
+5개 언어(ko/en/ja/zh/es) 현지화, 키 리바인딩, 3슬롯 세이브를 갖춰 itch.io에 출시했습니다.
+                </article>
+              </div>
+            </div>
+            </div>
+                        <div class="tab-panel" role="tabpanel" id="work-panel-play" aria-labelledby="work-tab-play" hidden>
+              <p class="plain">플레이테스트 2차례에서 61건의 의견을 받아 분류하고, 40건 넘게 반영했습니다.</p>
+              <div class="split" data-split>
+              <div class="split-list">
+                <button type="button" class="split-item" data-pane="sp-play-2" aria-pressed="false">"어떤 게임인지 잘 모르겠어요." → 튜토리얼 컷신을 제작해 보완</button>
+                <button type="button" class="split-item" data-pane="sp-play-3" aria-pressed="false">"상태가 잘 안 보여요." → 상태 표시를 글자 대신 그림으로 통일</button>
+                <button type="button" class="split-item" data-pane="sp-play-4" aria-pressed="false">"퀘스트를 완료했는지 한 눈에 볼 수 있으면 좋겠어요." → 알림 표시</button>
+                <button type="button" class="split-item" data-pane="sp-play-5" aria-pressed="false">"오늘 제가 먹이를 줬는지 헷갈려요." → 상태를 그림으로 시각화</button>
+                <button type="button" class="split-item" data-pane="sp-play-6" aria-pressed="false">"꾸며 놓은 맵인데 할 게 없어요." → 가구 조사 설명</button>
+                <button type="button" class="split-item" data-pane="sp-play-1" aria-pressed="false">❤️ 긍정적 의견</button>
+              </div>
+              <div class="split-view">
+                <article class="split-pane" id="sp-play-2" hidden>
+                  <h5 class="sp-title">"어떤 게임인지 잘 모르겠어요." → 튜토리얼 컷신을 제작해 보완</h5>
+                  <p class="sp-line">신규 유저 온보딩을 위한 첫 플레이 안내입니다</p>
+                  <div class="step"><em>피드백</em><span>"전체적으로 어떻게 할지 모르는 걸 보니 튜토리얼이 있으면 좋겠어요."</span></div>
+                  <div class="step"><em>반영</em><span>새 슬롯을 만든 직후 한 번만 재생되는 튜토리얼 컷신을 만들었습니다. 이를 통해 사용자는 게임에 비교적 쉽게 익숙해질 수 있습니다.</span></div>
+                  <div class="step"><em>하위 호환</em><span>재생 여부를 저장 필드(<code>tutorial_intro_shown</code>)로 구분하고, 필드가 없는 기존 세이브는 이미 재생한 것으로 처리해 하위 호환을 유지했습니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-play-3" hidden>
+                  <h5 class="sp-title">"상태가 잘 안 보여요." → 상태 표시를 글자 대신 그림으로 통일</h5>
+                  <p class="sp-line">글자로 읽던 상태를 바와 게이지로 바꿔 직관성을 높였습니다</p>
+                  <div class="step"><em>피드백</em><span>"요리 진행바가 잘 안 보여요." "낚시 창에서 클릭 횟수와 남은 시간이 잘 안 보여요." "아이템 개수와 코인 숫자가 눈에 안 띄어요."</span></div>
+                  <div class="step"><em>반영</em><span>낚시의 "4 / 6" 글자는 점 6개 게이지로, 가로 시간 바는 세로 바로 바꾸고, 요리 진행바는 조리기구 아래로 옮겨 크기를 키웠습니다. 개수와 코인 숫자에는 검은 테두리를 넣어 어떤 배경에서도 읽히게 했습니다.</span></div>
+                  <div class="step"><em>의도</em><span>글자로 읽어야 하던 상태를 그림(바, 게이지)으로 바꿔 한눈에 알 수 있게 했고, 조리기구와 낚시가 같은 표현을 쓰도록 UI를 통일해 일관성을 높였습니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-play-4" hidden>
+                  <h5 class="sp-title">"퀘스트를 완료했는지 한 눈에 볼 수 있으면 좋겠어요." → 알림 표시</h5>
+                  <p class="sp-line">확인할 것이 생겼음을 알림 배지로 보여 줍니다</p>
+                  <div class="step"><em>피드백</em><span>"퀘스트를 완료했는지 한 눈에 볼 수 있으면 좋겠어요." "컴퓨터 메일 아이콘에서도 알 수 있으면 좋겠어요."</span></div>
+                  <div class="step"><em>반영</em><span>요청함 메뉴와 바탕화면 메일 아이콘에 직접 그린 알림 배지를 달았습니다. 받은 메일함에는 안 읽은 메일 배지(New)를 달았고, 잠에서 깬 직후에도 새 메일 알림을 확인하도록 했습니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-play-5" hidden>
+                  <h5 class="sp-title">"오늘 제가 먹이를 줬는지 헷갈려요." → 상태를 그림으로 시각화</h5>
+                  <p class="sp-line">급여 여부를 여물통의 채움·비움 그림으로 바로 알 수 있게 했습니다</p>
+                  <div class="step"><em>피드백</em><span>"오늘 제가 먹이를 줬는지 헷갈려요."</span></div>
+                  <div class="step"><em>반영</em><span>외양간 칸마다 여물통 오브젝트를 두고, 여물통을 비우고 채우는 방식으로 급여를 처리해 채운 상태와 빈 상태가 그림으로 구분되게 했습니다. 글이 아니라 그림(시각적 피드백)만 봐도 직관적으로 알 수 있는 구조입니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-play-6" hidden>
+                  <h5 class="sp-title">"꾸며 놓은 맵인데 할 게 없어요." → 가구 조사 설명</h5>
+                  <p class="sp-line">배경 가구를 조사하면 짧은 설명이 나옵니다</p>
+                  <div class="step"><em>피드백</em><span>"잘 꾸며진 맵인데 상호작용할 게 없어서 아쉬워요." "길에 있는 가구도 눌러 보게 돼요."</span></div>
+                  <div class="step"><em>판단</em><span>버그가 아니라 콘텐츠 추가 요청으로 분류(트리아지)했습니다.</span></div>
+                  <div class="step"><em>반영</em><span>배경 가구를 조사하면 짧은 설명이 나오는 환경 스토리텔링 요소를 추가했습니다. 설명 문구는 데이터 파일로 분리하고 맵 에디터(Tiled)에서 id만 연결하면 반영되도록 해, 코드 수정 없이 콘텐츠를 추가할 수 있게 했습니다.</span></div>
+                </article>
+                <article class="split-pane" id="sp-play-1" hidden>
+                  <h5 class="sp-title">❤️ 긍정적 의견</h5>
+                  <p class="sp-line">플레이테스트에서 받은 긍정적인 반응입니다</p>
+                  <div class="step"><em>피드백</em><span>"돈을 버는 시스템이 재밌어요." "조리도구 소리가 사실적이라 힐링돼요." "캐릭터 구성이 좋아요."</span></div>
+                  <div class="step"><em>결과</em><span>의도한 경제 시스템, 사운드 연출, 캐릭터 설계가 실제 플레이어에게 긍정적인 경험으로 연결됐습니다.</span></div>
+                </article>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          
+          <p class="credit">에셋: 맵 20종 전체와 도트 다수는 직접 제작했습니다. 일부 도트와 BGM은 AI 도구(PixelLab, Stable Audio)로 생성한 뒤 편집하여 적용했습니다.</p>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="stage contact">
+      <h2><span class="stage-no">GAME CLEAR</span> CONTINUE?</h2>
+      <div class="panel">
+        <ul class="contact-list">
+          <li><span>EMAIL</span><a href="mailto:code11298@naver.com">code11298@naver.com</a></li>
+          <li><span>RESUME</span><a href="resume_kim_yujin.pdf" target="_blank" rel="noopener">이력서 PDF 보기</a></li>          <!-- 포트폴리오 PDF를 올린 뒤 아래 줄의 주석을 풀고 파일명을 맞추세요
+          <li><span>PDF</span><a href="portfolio.pdf" download>포트폴리오 PDF 다운로드</a></li>
+          -->
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 PLAYER 1 · INSERT COIN TO CONTINUE</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

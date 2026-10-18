@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c3a52" stop-opacity="0"/><stop offset="1" stop-color="#0b1a28" stop-opacity="0.6"/></linearGradient></defs>
+  <rect width="1600" height="800" fill="#2b5876"/>
+  <rect width="1600" height="800" fill="url(#bg)"/>
+  <g>
+    <rect x="130" y="70" width="1340" height="660" rx="14" fill="#f9fafb" stroke="#1f2937" stroke-opacity="0.35" stroke-width="3"/>
+    <rect x="130" y="70" width="1340" height="62" rx="14" fill="#e8edf4"/>
+    <rect x="130" y="110" width="1340" height="22" fill="#e8edf4"/>
+    <circle cx="176" cy="101" r="9" fill="#ef5b5b"/><circle cx="208" cy="101" r="9" fill="#f2c14e"/><circle cx="240" cy="101" r="9" fill="#5bc27a"/>
+    <text x="800" y="110" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="26" fill="#374151">npc</text>
+    <rect x="160" y="152" width="1280" height="52" rx="8" fill="#ffffff" stroke="#cdd5df" stroke-width="2"/>
+    <text x="184" y="188" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="26" fill="#4b5563">data  ›  npc</text>
+    <rect x="130" y="222" width="230" height="468" fill="#f0f3f8"/>
+    <text x="160" y="278" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="24" fill="#374151">data</text>
+    <text x="190" y="326" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="24" fill="#374151">animals</text>
+    <text x="190" y="374" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="24" fill="#374151">cooking</text>
+    <rect x="150" y="392" width="196" height="46" rx="6" fill="#d7e6fb"/>
+    <text x="190" y="424" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="24" font-weight="700" fill="#1d4ed8">npc</text>
+    <text x="190" y="472" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="24" fill="#374151">horror</text>
+    <text x="190" y="520" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="24" fill="#374151">items</text>
+    <g>
+      <path d="M440 250 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M486 250 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="473" y="312" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="473" y="364" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">belje.json</text>
+    </g><g>
+      <path d="M640 250 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M686 250 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="673" y="312" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="673" y="364" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">flora.json</text>
+    </g><g>
+      <path d="M840 250 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M886 250 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="873" y="312" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="873" y="364" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">isha.json</text>
+    </g><g>
+      <path d="M1040 250 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M1086 250 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="1073" y="312" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="1073" y="364" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">lama.json</text>
+    </g><g>
+      <path d="M1240 250 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M1286 250 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="1273" y="312" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="1273" y="364" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">marin.json</text>
+    </g><g>
+      <path d="M440 400 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M486 400 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="473" y="462" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="473" y="514" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">marr.json</text>
+    </g><g>
+      <path d="M640 400 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M686 400 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="673" y="462" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="673" y="514" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">mocha.json</text>
+    </g><g>
+      <path d="M840 400 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M886 400 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="873" y="462" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="873" y="514" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">poli.json</text>
+    </g><g>
+      <path d="M1040 400 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M1086 400 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="1073" y="462" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="1073" y="514" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">roshi.json</text>
+    </g><g>
+      <path d="M1240 400 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M1286 400 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="1273" y="462" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="1273" y="514" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">sage.json</text>
+    </g><g>
+      <path d="M440 550 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M486 550 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="473" y="612" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="473" y="664" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">shepherd.json</text>
+    </g><g>
+      <path d="M640 550 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M686 550 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="673" y="612" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="673" y="664" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">usher.json</text>
+    </g><g>
+      <path d="M840 550 h46 l20 20 v66 h-66 z" fill="#ffffff" stroke="#8a93a3" stroke-width="3"/>
+      <path d="M886 550 v20 h20" fill="#e6eaf0" stroke="#8a93a3" stroke-width="3"/>
+      <text x="873" y="612" text-anchor="middle" font-family="'Consolas','Courier New',monospace" font-size="22" font-weight="700" fill="#d9822b">{ }</text>
+      <text x="873" y="664" text-anchor="middle" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#1f2937">woody.json</text>
+    </g>
+    <rect x="130" y="690" width="1340" height="40" fill="#e8edf4"/>
+    <text x="160" y="718" font-family="'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="22" fill="#4b5563">13개 항목</text>
+  </g></svg>
