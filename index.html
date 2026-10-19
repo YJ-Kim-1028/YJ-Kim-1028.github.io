@@ -369,11 +369,11 @@
               <p>MC CUBE 모듈로 정해진 규격대로 전문을 조립해 <mark>대외기관과 송수신하는 인터페이스</mark>를 작성, POSTMAN으로 전문 확인</p>
               <p>화면·프로그램 <mark>설계서 작성 및 관리</mark>, 테스트케이스 결과서 작성, 통합 테스트에서 <mark>고객 시연</mark>, 전화·메신저로 고객과 직접 소통</p>
               <p>프로그램을 분석하다 <mark>Garbage Code를 정리</mark>하고 파일이 없을 때 <mark>에러로 종료되던 코드를 데이터 존재 확인 후 호출</mark>되도록 수정</p>
-              <p>데이터가 다른 화면에서 잘못 보이는 문제를 찾아 리더에게 보고, 회의를 거쳐 <mark>테이블을 수정</mark></p>
+              <p>ASIS-TOBE 이행 중 컬럼이 비어 있어도 실제 데이터가 약 200건 존재함을 찾아 리더에게 보고하고, <mark>TOBE 테이블에 해당 컬럼을 추가</mark>해 전체 데이터를 이행</p>
           </div>
           <p class="career-sub">사례</p>
           <div class="career-cases">
-            <div class="career-case"><p class="career-case-t">화면 간 데이터 불일치 원인 분석과 테이블 수정</p><dl><div><dt>상황</dt><dd>동일한 데이터가 다른 화면에서 잘못 조회되는 문제가 있었습니다.</dd></div><div><dt>한 일</dt><dd>원인을 분석해 리더에게 보고하고, 회의를 거쳐 수정 방향을 정했습니다.</dd></div><div><dt>결과</dt><dd>테이블을 수정해 문제를 해결했습니다.</dd></div></dl></div>
+            <div class="career-case"><p class="career-case-t">데이터 이행 중 누락 데이터(약 200건) 발견과 TOBE 테이블 컬럼 보완</p><dl><div><dt>상황</dt><dd>ASIS에서 TOBE로 데이터를 이행할 때, 특정 컬럼이 비어 있는 데이터는 가비지로 판단해 이행 대상에서 제외하고 있었습니다.</dd></div><div><dt>한 일</dt><dd>해당 컬럼이 비어 있어도 실제 데이터가 약 200건 존재함을 발견해 리더에게 보고했습니다. 이행 과정에서 TOBE 테이블에 해당 컬럼을 추가하도록 수정했습니다.</dd></div><div><dt>결과</dt><dd>누락 없이 전체 데이터를 문제 없이 이행했습니다.</dd></div></dl></div>
             <div class="career-case"><p class="career-case-t">예외 미처리 코드 개선</p><dl><div><dt>상황</dt><dd>프로그램 분석 중 대상 파일이 없으면 에러로 비정상 종료되는 코드를 확인했습니다.</dd></div><div><dt>한 일</dt><dd>불필요한 코드(Garbage Code)를 정리하고, 데이터 존재 여부를 먼저 확인한 뒤 호출하도록 수정했습니다.</dd></div><div><dt>결과</dt><dd>파일이 없는 경우에도 비정상 종료 없이 동작하도록 개선했습니다.</dd></div></dl></div>
           </div>
         </section>
